@@ -29,8 +29,11 @@
         private void InitializeComponent()
         {
             login = new TextBox();
-            haslo = new TextBox();
+            password = new TextBox();
             label1 = new Label();
+            logButton = new Button();
+            label2 = new Label();
+            label3 = new Label();
             SuspendLayout();
             // 
             // login
@@ -40,12 +43,13 @@
             login.Size = new Size(100, 23);
             login.TabIndex = 0;
             // 
-            // haslo
+            // password
             // 
-            haslo.Location = new Point(411, 207);
-            haslo.Name = "haslo";
-            haslo.Size = new Size(100, 23);
-            haslo.TabIndex = 1;
+            password.Location = new Point(411, 207);
+            password.Name = "password";
+            password.Size = new Size(100, 23);
+            password.TabIndex = 1;
+            password.UseSystemPasswordChar = true;
             // 
             // label1
             // 
@@ -57,18 +61,48 @@
             label1.Size = new Size(204, 32);
             label1.TabIndex = 2;
             label1.Text = "BikeROOOOOOO";
-            label1.Click += label1_Click;
+            // 
+            // logButton
+            // 
+            logButton.Location = new Point(578, 207);
+            logButton.Name = "logButton";
+            logButton.Size = new Size(75, 23);
+            logButton.TabIndex = 3;
+            logButton.Text = "Zaloguj";
+            logButton.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(289, 188);
+            label2.Name = "label2";
+            label2.Size = new Size(37, 15);
+            label2.TabIndex = 4;
+            label2.Text = "Login";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(440, 188);
+            label3.Name = "label3";
+            label3.Size = new Size(37, 15);
+            label3.TabIndex = 5;
+            label3.Text = "Hasło";
             // 
             // main
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(799, 450);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(logButton);
             Controls.Add(label1);
-            Controls.Add(haslo);
+            Controls.Add(password);
             Controls.Add(login);
             Name = "main";
             Text = "Form1";
+            Load += main_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -76,7 +110,10 @@
         #endregion
 
         private TextBox login;
-        private TextBox haslo;
+        private TextBox password;
         private Label label1;
+        private Button logButton;
+        private Label label2;
+        private Label label3;
     }
 }
