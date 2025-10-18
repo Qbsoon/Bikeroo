@@ -1,6 +1,6 @@
 ﻿-- Tworzenie tabeli stations
 CREATE TABLE stations (
-	Id INTEGER NOT NULL PRIMARY KEY,
+	Id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
 	name TEXT NOT NULL
 );
 
@@ -15,7 +15,7 @@ CREATE TABLE users (
 
 -- Tworzenie tabeli bikes
 CREATE TABLE bikes (
-	Id INTEGER NOT NULL PRIMARY KEY,
+	Id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
 	model TEXT NOT NULL,
 	station INTEGER NOT NULL,
 	statusBorrowed INTEGER,
@@ -31,3 +31,21 @@ VALUES ('test', 'test', 2, 0),
 ('user', 'user', 2, 100),
 ('engineer', '123', 1, 0),
 ('admin', 'admin', 0, 0);
+
+-- Wstawienie stacji
+INSERT INTO stations (name)
+VALUES ('Centrum1'), 
+('Centrum2'), 
+('Felin1'), 
+('Felin2');
+
+-- Wstawienie rowerów
+INSERT INTO bikes (model, station)
+VALUES ('VHS500', 1), 
+('VHS700', 1), 
+('VHS500', 2), 
+('PRL100', 2), 
+('Q11', 3), 
+('PRL350', 3), 
+('MS365', 4), 
+('Q77', 4);
