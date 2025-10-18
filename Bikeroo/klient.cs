@@ -10,11 +10,31 @@ using System.Windows.Forms;
 
 namespace Bikeroo
 {
-    public partial class klient: Form
+    public partial class klient : Form
     {
         public klient()
         {
             InitializeComponent();
+        }
+
+        private void klient_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
