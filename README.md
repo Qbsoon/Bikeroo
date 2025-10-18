@@ -1,1 +1,39 @@
 # Bikerooooooooooooooooo
+- [ ] Database:
+  - [ ] tabelka od zgłoszeń
+- [ ] Main:
+  - [ ] logowanie
+  - [ ] tworzenie nowego konta
+  - [ ] (opcjonalne) dodanie e-maila
+- [ ] Klient:
+  - [ ] Wypożycz:
+    - [ ] wyświetlanie listy możliwych do wypożyczenia rowerów
+    - [ ] umożliwienie wypożyczania
+    - [ ] dodanie okna do zgłaszania awarii
+    - [ ] dodanie zakładki z saldem konta
+    - [ ] (opcjonalnie) punkty lojalnościowe i jakieś mini gierki
+  - [ ] Zwróć:
+    - [ ] wyświetlanie listy wypożyczonych rowerów
+    - [ ] umożliwanie zwracania
+- [ ] Inżynier:
+  - [ ] Przenoszenie roweru z stacji do naprawy:
+    - [ ] przenoszenie roweru
+    - [ ] widzi komunikat o zgłoszeniu stworzonym przez użytkownika (sprzęt)
+  - [ ] Przenosze z naprawy
+    - [ ] wyświetlanie listy rowerów obecnie w naprawie
+    - [ ] usuwanie rowerów
+    - [ ] przenoszenie rowerów na stację
+  - [ ] Przenoszenie rowerów między stacjami:
+    - [ ] wyświetlanie listy rowerów obecnych na stacjach
+    - [ ] umożliwienie przenoszenia rowerów między stacjami
+- [ ] Admin:
+  - [ ] widzi komunikat o zgłoszeniu stworzonym przez użytkownika
+  - [ ] Rowery:
+    - [ ] umożliwienie usuwania rowerów za pomocą okna
+    - [ ] umożliwienie dodawania rowerów za pomocą okna
+  - [ ] Stacje:
+    - [ ] umożliwienie usuwania stacji za pomocą okna
+    - [ ] umożliwienie dodawania stacji za pomocą okna
+- [ ] Konta:
+    - [ ] umożliwienie usuwania kont za pomocą okna (zawsze musi być przynajmniej jeden Admin)
+    - [ ] umożliwienie dodawania kont za pomocą okna

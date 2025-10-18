@@ -29,17 +29,17 @@
         private void InitializeComponent()
         {
             bikeList = new ListView();
-            repeir_List = new ListView();
-            button1 = new Button();
-            button2 = new Button();
+            repeirList = new ListView();
+            toRepeir = new Button();
+            confirm = new Button();
             nrStation = new TextBox();
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
             tabPage2 = new TabPage();
-            label2 = new Label();
-            radioButton1 = new RadioButton();
             groupBox1 = new GroupBox();
-            radioButton2 = new RadioButton();
+            deleteBike = new RadioButton();
+            toStation = new RadioButton();
+            label2 = new Label();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -55,32 +55,32 @@
             bikeList.UseCompatibleStateImageBehavior = false;
             bikeList.SelectedIndexChanged += bikeList_SelectedIndexChanged;
             // 
-            // repeir_List
+            // repeirList
             // 
-            repeir_List.Location = new Point(6, 5);
-            repeir_List.Name = "repeir_List";
-            repeir_List.Size = new Size(573, 397);
-            repeir_List.TabIndex = 1;
-            repeir_List.UseCompatibleStateImageBehavior = false;
+            repeirList.Location = new Point(6, 5);
+            repeirList.Name = "repeirList";
+            repeirList.Size = new Size(573, 397);
+            repeirList.TabIndex = 1;
+            repeirList.UseCompatibleStateImageBehavior = false;
             // 
-            // button1
+            // toRepeir
             // 
-            button1.Location = new Point(629, 319);
-            button1.Name = "button1";
-            button1.Size = new Size(139, 81);
-            button1.TabIndex = 2;
-            button1.Text = "Do naprawy";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            toRepeir.Location = new Point(629, 319);
+            toRepeir.Name = "toRepeir";
+            toRepeir.Size = new Size(139, 81);
+            toRepeir.TabIndex = 2;
+            toRepeir.Text = "Do naprawy";
+            toRepeir.UseVisualStyleBackColor = true;
+            toRepeir.Click += button1_Click;
             // 
-            // button2
+            // confirm
             // 
-            button2.Location = new Point(629, 321);
-            button2.Name = "button2";
-            button2.Size = new Size(139, 81);
-            button2.TabIndex = 3;
-            button2.Text = "Potwierdz akcję";
-            button2.UseVisualStyleBackColor = true;
+            confirm.Location = new Point(629, 321);
+            confirm.Name = "confirm";
+            confirm.Size = new Size(139, 81);
+            confirm.TabIndex = 3;
+            confirm.Text = "Potwierdz akcję";
+            confirm.UseVisualStyleBackColor = true;
             // 
             // nrStation
             // 
@@ -101,7 +101,7 @@
             // 
             // tabPage1
             // 
-            tabPage1.Controls.Add(button1);
+            tabPage1.Controls.Add(toRepeir);
             tabPage1.Controls.Add(bikeList);
             tabPage1.Location = new Point(4, 24);
             tabPage1.Name = "tabPage1";
@@ -115,8 +115,8 @@
             // 
             tabPage2.Controls.Add(groupBox1);
             tabPage2.Controls.Add(label2);
-            tabPage2.Controls.Add(repeir_List);
-            tabPage2.Controls.Add(button2);
+            tabPage2.Controls.Add(repeirList);
+            tabPage2.Controls.Add(confirm);
             tabPage2.Controls.Add(nrStation);
             tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
@@ -126,6 +126,39 @@
             tabPage2.Text = "Przenoszenie z naprawy";
             tabPage2.UseVisualStyleBackColor = true;
             // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(deleteBike);
+            groupBox1.Controls.Add(toStation);
+            groupBox1.Location = new Point(625, 208);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(143, 76);
+            groupBox1.TabIndex = 10;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Podjęta akcja";
+            // 
+            // deleteBike
+            // 
+            deleteBike.AutoSize = true;
+            deleteBike.Location = new Point(17, 47);
+            deleteBike.Name = "deleteBike";
+            deleteBike.Size = new Size(85, 19);
+            deleteBike.TabIndex = 11;
+            deleteBike.TabStop = true;
+            deleteBike.Text = "Usuń rower";
+            deleteBike.UseVisualStyleBackColor = true;
+            // 
+            // toStation
+            // 
+            toStation.AutoSize = true;
+            toStation.Location = new Point(17, 22);
+            toStation.Name = "toStation";
+            toStation.Size = new Size(105, 19);
+            toStation.TabIndex = 9;
+            toStation.TabStop = true;
+            toStation.Text = "Zwrot na stację";
+            toStation.UseVisualStyleBackColor = true;
+            // 
             // label2
             // 
             label2.AutoSize = true;
@@ -134,39 +167,6 @@
             label2.Size = new Size(38, 15);
             label2.TabIndex = 8;
             label2.Text = "Stacja";
-            // 
-            // radioButton1
-            // 
-            radioButton1.AutoSize = true;
-            radioButton1.Location = new Point(17, 22);
-            radioButton1.Name = "radioButton1";
-            radioButton1.Size = new Size(105, 19);
-            radioButton1.TabIndex = 9;
-            radioButton1.TabStop = true;
-            radioButton1.Text = "Zwrot na stację";
-            radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // groupBox1
-            // 
-            groupBox1.Controls.Add(radioButton2);
-            groupBox1.Controls.Add(radioButton1);
-            groupBox1.Location = new Point(625, 208);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(143, 76);
-            groupBox1.TabIndex = 10;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "Podjęta akcja";
-            // 
-            // radioButton2
-            // 
-            radioButton2.AutoSize = true;
-            radioButton2.Location = new Point(17, 47);
-            radioButton2.Name = "radioButton2";
-            radioButton2.Size = new Size(85, 19);
-            radioButton2.TabIndex = 11;
-            radioButton2.TabStop = true;
-            radioButton2.Text = "Usuń rower";
-            radioButton2.UseVisualStyleBackColor = true;
             // 
             // engineer
             // 
@@ -188,16 +188,16 @@
         #endregion
 
         private ListView bikeList;
-        private ListView repeir_List;
-        private Button button1;
-        private Button button2;
+        private ListView repeirList;
+        private Button toRepeir;
+        private Button confirm;
         private TextBox nrStation;
         private TabControl tabControl1;
         private TabPage tabPage1;
         private TabPage tabPage2;
         private Label label2;
         private GroupBox groupBox1;
-        private RadioButton radioButton2;
-        private RadioButton radioButton1;
+        private RadioButton deleteBike;
+        private RadioButton toStation;
     }
 }
