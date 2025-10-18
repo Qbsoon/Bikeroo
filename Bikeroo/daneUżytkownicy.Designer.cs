@@ -116,6 +116,7 @@
             adminAdd.TabStop = true;
             adminAdd.Text = "Admin";
             adminAdd.UseVisualStyleBackColor = true;
+            adminAdd.CheckedChanged += adminAdd_CheckedChanged;
             // 
             // engenierAdd
             // 

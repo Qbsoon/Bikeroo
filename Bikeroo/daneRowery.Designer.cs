@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             addBikes = new Button();
-            addBikeName = new TextBox();
+            addBikeModel = new TextBox();
             bikeStation = new TextBox();
             label1 = new Label();
             label2 = new Label();
@@ -45,12 +45,12 @@
             addBikes.Text = "potwierdz";
             addBikes.UseVisualStyleBackColor = true;
             // 
-            // addBikeName
+            // addBikeModel
             // 
-            addBikeName.Location = new Point(76, 74);
-            addBikeName.Name = "addBikeName";
-            addBikeName.Size = new Size(100, 23);
-            addBikeName.TabIndex = 1;
+            addBikeModel.Location = new Point(76, 74);
+            addBikeModel.Name = "addBikeModel";
+            addBikeModel.Size = new Size(100, 23);
+            addBikeModel.TabIndex = 1;
             // 
             // bikeStation
             // 
@@ -98,7 +98,7 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(bikeStation);
-            Controls.Add(addBikeName);
+            Controls.Add(addBikeModel);
             Controls.Add(addBikes);
             Name = "daneRowery";
             Text = "daneRowery";
@@ -109,7 +109,7 @@
         #endregion
 
         private Button addBikes;
-        private TextBox addBikeName;
+        private TextBox addBikeModel;
         private TextBox bikeStation;
         private Label label1;
         private Label label2;

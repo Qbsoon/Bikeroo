@@ -26,5 +26,10 @@ namespace Bikeroo
         {
 
         }
+
+        private void adminAdd_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
