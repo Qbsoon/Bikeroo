@@ -31,7 +31,7 @@
             login = new TextBox();
             password = new TextBox();
             label1 = new Label();
-            logButton = new Button();
+            loginButton = new Button();
             label2 = new Label();
             label3 = new Label();
             SuspendLayout();
@@ -62,14 +62,15 @@
             label1.TabIndex = 2;
             label1.Text = "BikeROOOOOOO";
             // 
-            // logButton
+            // loginButton
             // 
-            logButton.Location = new Point(578, 207);
-            logButton.Name = "logButton";
-            logButton.Size = new Size(75, 23);
-            logButton.TabIndex = 3;
-            logButton.Text = "Zaloguj";
-            logButton.UseVisualStyleBackColor = true;
+            loginButton.Location = new Point(578, 207);
+            loginButton.Name = "loginButton";
+            loginButton.Size = new Size(75, 23);
+            loginButton.TabIndex = 3;
+            loginButton.Text = "Zaloguj";
+            loginButton.UseVisualStyleBackColor = true;
+            loginButton.Click += loginButton_Click;
             // 
             // label2
             // 
@@ -96,7 +97,7 @@
             ClientSize = new Size(799, 450);
             Controls.Add(label3);
             Controls.Add(label2);
-            Controls.Add(logButton);
+            Controls.Add(loginButton);
             Controls.Add(label1);
             Controls.Add(password);
             Controls.Add(login);
@@ -112,7 +113,7 @@
         private TextBox login;
         private TextBox password;
         private Label label1;
-        private Button logButton;
+        private Button loginButton;
         private Label label2;
         private Label label3;
     }

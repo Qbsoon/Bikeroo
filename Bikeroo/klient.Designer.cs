@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             button1 = new Button();
-            listView1 = new ListView();
-            button2 = new Button();
+            rentBtn = new Button();
             button3 = new Button();
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
+            rentList = new ListBox();
             tabPage2 = new TabPage();
-            listView2 = new ListView();
-            label1 = new Label();
             textBox1 = new TextBox();
+            label1 = new Label();
+            listView2 = new ListView();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -52,23 +52,15 @@
             button1.Text = "Zgłoś";
             button1.UseVisualStyleBackColor = true;
             // 
-            // listView1
+            // rentBtn
             // 
-            listView1.Location = new Point(6, 3);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(766, 389);
-            listView1.TabIndex = 2;
-            listView1.UseCompatibleStateImageBehavior = false;
-            // 
-            // button2
-            // 
-            button2.Location = new Point(595, 337);
-            button2.Name = "button2";
-            button2.Size = new Size(177, 55);
-            button2.TabIndex = 4;
-            button2.Text = "WYPOŻYCZ";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            rentBtn.Location = new Point(595, 337);
+            rentBtn.Name = "rentBtn";
+            rentBtn.Size = new Size(177, 55);
+            rentBtn.TabIndex = 4;
+            rentBtn.Text = "WYPOŻYCZ";
+            rentBtn.UseVisualStyleBackColor = true;
+            rentBtn.Click += rentBtn_click;
             // 
             // button3
             // 
@@ -91,8 +83,8 @@
             // 
             // tabPage1
             // 
-            tabPage1.Controls.Add(button2);
-            tabPage1.Controls.Add(listView1);
+            tabPage1.Controls.Add(rentBtn);
+            tabPage1.Controls.Add(rentList);
             tabPage1.Location = new Point(4, 24);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
@@ -100,6 +92,15 @@
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Wypożycz";
             tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // rentList
+            // 
+            rentList.FormattingEnabled = true;
+            rentList.ItemHeight = 15;
+            rentList.Location = new Point(0, 0);
+            rentList.Name = "rentList";
+            rentList.Size = new Size(775, 394);
+            rentList.TabIndex = 5;
             // 
             // tabPage2
             // 
@@ -115,13 +116,12 @@
             tabPage2.Text = "Zwróć";
             tabPage2.UseVisualStyleBackColor = true;
             // 
-            // listView2
+            // textBox1
             // 
-            listView2.Location = new Point(6, 6);
-            listView2.Name = "listView2";
-            listView2.Size = new Size(769, 326);
-            listView2.TabIndex = 6;
-            listView2.UseCompatibleStateImageBehavior = false;
+            textBox1.Location = new Point(405, 348);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(184, 23);
+            textBox1.TabIndex = 8;
             // 
             // label1
             // 
@@ -132,14 +132,14 @@
             label1.Size = new Size(381, 25);
             label1.TabIndex = 7;
             label1.Text = "Podaj nazwa stacji do której zwracasz rower";
-            label1.Click += label1_Click;
             // 
-            // textBox1
+            // listView2
             // 
-            textBox1.Location = new Point(405, 348);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(184, 23);
-            textBox1.TabIndex = 8;
+            listView2.Location = new Point(6, 6);
+            listView2.Name = "listView2";
+            listView2.Size = new Size(769, 326);
+            listView2.TabIndex = 6;
+            listView2.UseCompatibleStateImageBehavior = false;
             // 
             // klient
             // 
@@ -161,8 +161,7 @@
         #endregion
 
         private Button button1;
-        private ListView listView1;
-        private Button button2;
+        private Button rentBtn;
         private Button button3;
         private TabControl tabControl1;
         private TabPage tabPage1;
@@ -170,5 +169,6 @@
         private ListView listView2;
         private Label label1;
         private TextBox textBox1;
+        private ListBox rentList;
     }
 }
