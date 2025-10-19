@@ -47,5 +47,19 @@ VALUES ('VHS500', 1),
 ('PRL100', 2), 
 ('Q11', 3), 
 ('PRL350', 3), 
-('MS365', 4), 
+('MS365', 4),
 ('Q77', 4);
+
+-- Wstawienie naprawianych rowerów
+INSERT INTO bikes (model, station, statusMaintenance)
+VALUES ('Q11', 3, 3), 
+('PRL350', 3, 3), 
+('MS365', 4, 3), 
+('MS365', 4, 2);
+
+-- Wstawienie wypożyczonych rowerów
+INSERT INTO bikes (model, station, statusBorrowed)
+VALUES ('Q11', 3, 1), 
+('VHS700', 3, 2), 
+('VHS500', 4, 2), 
+('PRL100', 4, 2);

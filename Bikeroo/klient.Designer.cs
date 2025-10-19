@@ -37,7 +37,7 @@
             tabPage2 = new TabPage();
             textBox1 = new TextBox();
             label1 = new Label();
-            listView2 = new ListView();
+            returnList = new ListBox();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -97,17 +97,17 @@
             // 
             rentList.FormattingEnabled = true;
             rentList.ItemHeight = 15;
-            rentList.Location = new Point(0, 0);
+            rentList.Location = new Point(6, 6);
             rentList.Name = "rentList";
-            rentList.Size = new Size(775, 394);
+            rentList.Size = new Size(769, 319);
             rentList.TabIndex = 5;
             // 
             // tabPage2
             // 
+            tabPage2.Controls.Add(returnList);
             tabPage2.Controls.Add(textBox1);
             tabPage2.Controls.Add(label1);
             tabPage2.Controls.Add(button3);
-            tabPage2.Controls.Add(listView2);
             tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
@@ -133,13 +133,14 @@
             label1.TabIndex = 7;
             label1.Text = "Podaj nazwa stacji do której zwracasz rower";
             // 
-            // listView2
+            // returnList
             // 
-            listView2.Location = new Point(6, 6);
-            listView2.Name = "listView2";
-            listView2.Size = new Size(769, 326);
-            listView2.TabIndex = 6;
-            listView2.UseCompatibleStateImageBehavior = false;
+            returnList.FormattingEnabled = true;
+            returnList.ItemHeight = 15;
+            returnList.Location = new Point(6, 6);
+            returnList.Name = "returnList";
+            returnList.Size = new Size(769, 319);
+            returnList.TabIndex = 9;
             // 
             // klient
             // 
@@ -166,9 +167,9 @@
         private TabControl tabControl1;
         private TabPage tabPage1;
         private TabPage tabPage2;
-        private ListView listView2;
         private Label label1;
         private TextBox textBox1;
         private ListBox rentList;
+        private ListBox returnList;
     }
 }

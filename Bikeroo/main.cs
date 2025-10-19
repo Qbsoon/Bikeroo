@@ -1,13 +1,17 @@
 using Microsoft.Data.Sqlite;
 using System.Data;
+using System.Numerics;
 
 namespace Bikeroo
 {
     public partial class main : Form
     {
+        private string connectionString;
         public main()
         {
             InitializeComponent();
+            string databasePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "database.sqlite");
+            connectionString = $"Data Source={databasePath}";
 
         }
 
@@ -20,21 +24,27 @@ namespace Bikeroo
         {
             string usernameText = login.Text;
             string passwordText = password.Text;
-            string databasePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "database.sqlite");
-            string connectionString = $"Data Source={databasePath}";
             using (var connection = new SqliteConnection(connectionString))
             {
                 connection.Open();
-                string query = "SELECT type FROM users WHERE username=@username AND password=@password";
+                string query = "SELECT Id, type FROM users WHERE username=@username AND password=@password";
                 SqliteCommand command = new SqliteCommand(query, connection);
                 command.Parameters.AddWithValue("@username", usernameText);
                 command.Parameters.AddWithValue("@password", passwordText);
-                object result = command.ExecuteScalar();
-                int type = result != null ? Convert.ToInt32(result) : -1;
+                SqliteDataReader reader = command.ExecuteReader();
+                int userId = -1;
+                int type = -1;
+                if (reader.Read())
+                {
+                    userId = reader.GetInt32(0);
+                    type = reader.GetInt32(1);
+                }
                 if (type == 2)
                 {
                     this.Hide();
                     klient klientForm = new klient();
+                    klientForm.setUserId(userId);
+                    klientForm.setConnectionString(connectionString);
                     klientForm.ShowDialog();
                     this.Close();
                 }
