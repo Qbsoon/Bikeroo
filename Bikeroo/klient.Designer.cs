@@ -35,9 +35,10 @@
             tabPage1 = new TabPage();
             rentList = new ListBox();
             tabPage2 = new TabPage();
+            returnList = new ListBox();
             textBox1 = new TextBox();
             label1 = new Label();
-            returnList = new ListBox();
+            balanceLabel = new Label();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -116,6 +117,15 @@
             tabPage2.Text = "Zwróć";
             tabPage2.UseVisualStyleBackColor = true;
             // 
+            // returnList
+            // 
+            returnList.FormattingEnabled = true;
+            returnList.ItemHeight = 15;
+            returnList.Location = new Point(6, 6);
+            returnList.Name = "returnList";
+            returnList.Size = new Size(769, 319);
+            returnList.TabIndex = 9;
+            // 
             // textBox1
             // 
             textBox1.Location = new Point(405, 348);
@@ -133,20 +143,21 @@
             label1.TabIndex = 7;
             label1.Text = "Podaj nazwa stacji do której zwracasz rower";
             // 
-            // returnList
+            // balanceLabel
             // 
-            returnList.FormattingEnabled = true;
-            returnList.ItemHeight = 15;
-            returnList.Location = new Point(6, 6);
-            returnList.Name = "returnList";
-            returnList.Size = new Size(769, 319);
-            returnList.TabIndex = 9;
+            balanceLabel.AutoSize = true;
+            balanceLabel.Location = new Point(529, 12);
+            balanceLabel.Name = "balanceLabel";
+            balanceLabel.Size = new Size(39, 15);
+            balanceLabel.TabIndex = 7;
+            balanceLabel.Text = "Saldo:";
             // 
             // klient
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(balanceLabel);
             Controls.Add(button1);
             Controls.Add(tabControl1);
             Name = "klient";
@@ -157,6 +168,7 @@
             tabPage2.ResumeLayout(false);
             tabPage2.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -171,5 +183,6 @@
         private TextBox textBox1;
         private ListBox rentList;
         private ListBox returnList;
+        private Label balanceLabel;
     }
 }

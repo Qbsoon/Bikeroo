@@ -18,6 +18,7 @@ namespace Bikeroo
         public klient()
         {
             InitializeComponent();
+            reloadBalance();
             reloadRentList();
             reloadReturnList();
         }
@@ -30,8 +31,28 @@ namespace Bikeroo
         public void setConnectionString(string connString)
         {
             connectionString = connString;
+            reloadBalance();
             reloadRentList();
             reloadReturnList();
+        }
+
+        private void reloadBalance()
+        {
+            if (connectionString != null && userId > 0)
+            {
+                using (var connection = new SqliteConnection(connectionString))
+                {
+                    connection.Open();
+                    string query = "SELECT balance FROM users WHERE Id=@userId";
+                    SqliteCommand command = new SqliteCommand(query, connection);
+                    command.Parameters.AddWithValue("@userId", userId);
+                    SqliteDataReader reader = command.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        balanceLabel.Text = "Saldo: " + reader.GetDouble(0) + " PLN";
+                    }
+                }
+            }
         }
 
         private void reloadRentList()

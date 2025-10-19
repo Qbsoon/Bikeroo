@@ -1,39 +1,40 @@
-# Bikerooooooooooooooooo
+# Bikeroo
 - [ ] Database:
-  - [ ] tabelka od zgłoszeń
+  - [ ] Tabela zgłoszeń
+  - [ ] Tabela wypożyczeń
 - [ ] Main:
-  - [ ] logowanie
-  - [ ] tworzenie nowego konta
-  - [ ] (opcjonalne) dodanie e-maila
+  - [x] Logowanie
+  - [ ] Tworzenie nowego konta
+  - [ ] (Opcjonalne) Dodanie e-mail
 - [ ] Klient:
   - [ ] Wypożycz:
-    - [ ] wyświetlanie listy możliwych do wypożyczenia rowerów
-    - [ ] umożliwienie wypożyczania
-    - [ ] dodanie okna do zgłaszania awarii
-    - [ ] dodanie zakładki z saldem konta
-    - [ ] (opcjonalnie) punkty lojalnościowe i jakieś mini gierki
+    - [x] Wyświetlanie listy możliwych do wypożyczenia rowerów
+    - [ ] Umożliwienie wypożyczania
+    - [ ] Dodanie okna do zgłaszania awarii
+    - [x] Dodanie napisu z saldem konta
+    - [ ] (Opcjonalnie) Punkty lojalnościowe i jakieś mini gierki
   - [ ] Zwróć:
-    - [ ] wyświetlanie listy wypożyczonych rowerów
-    - [ ] umożliwanie zwracania
+    - [x] Wyświetlanie listy wypożyczonych rowerów
+    - [ ] Umożliwanie zwracania
 - [ ] Inżynier:
   - [ ] Przenoszenie roweru z stacji do naprawy:
-    - [ ] przenoszenie roweru
-    - [ ] widzi komunikat o zgłoszeniu stworzonym przez użytkownika (sprzęt)
+    - [ ] Przenoszenie roweru
+    - [ ] Komunikat o zgłoszeniu stworzonym przez użytkownika (sprzęt) [Nie wiem, czy jest sens. (przyp.: Jakub)]
   - [ ] Przenosze z naprawy
-    - [ ] wyświetlanie listy rowerów obecnie w naprawie
-    - [ ] usuwanie rowerów
-    - [ ] przenoszenie rowerów na stację
+    - [ ] Wyświetlanie listy rowerów obecnie w naprawie
+    - [ ] Usuwanie rowerów
+    - [ ] Przenoszenie rowerów na stację
   - [ ] Przenoszenie rowerów między stacjami:
-    - [ ] wyświetlanie listy rowerów obecnych na stacjach
-    - [ ] umożliwienie przenoszenia rowerów między stacjami
+    - [ ] Wyświetlanie listy rowerów obecnych na stacjach
+    - [ ] Umożliwienie przenoszenia rowerów między stacjami
 - [ ] Admin:
-  - [ ] widzi komunikat o zgłoszeniu stworzonym przez użytkownika
+  - [ ] Komunikat o zgłoszeniu stworzonym przez użytkownika [Podobnie, nie wiem, czy jest sens. (przyp.: Jakub)]
   - [ ] Rowery:
-    - [ ] umożliwienie usuwania rowerów za pomocą okna
-    - [ ] umożliwienie dodawania rowerów za pomocą okna
+    - [ ] Umożliwienie usuwania rowerów za pomocą okna
+    - [ ] Umożliwienie dodawania rowerów za pomocą okna
   - [ ] Stacje:
-    - [ ] umożliwienie usuwania stacji za pomocą okna
-    - [ ] umożliwienie dodawania stacji za pomocą okna
+    - [ ] Umożliwienie usuwania stacji za pomocą okna
+    - [ ] Umożliwienie dodawania stacji za pomocą okna
 - [ ] Konta:
-    - [ ] umożliwienie usuwania kont za pomocą okna (zawsze musi być przynajmniej jeden Admin)
-    - [ ] umożliwienie dodawania kont za pomocą okna
+    - [ ] Umożliwienie usuwania kont za pomocą okna (zawsze musi być przynajmniej jeden Admin)
+    - [ ] Umożliwienie dodawania kont za pomocą okna
