@@ -100,7 +100,70 @@ namespace Bikeroo
 
         private void rentBtn_click(object sender, EventArgs e)
         {
+            var selected = rentList.SelectedItem as string;
+            if (selected != null && connectionString != null && userId > 0)
+            {
+                using (var connection = new SqliteConnection(connectionString))
+                {
+                    connection.Open();
+                    string query = "UPDATE bikes SET statusBorrowed=@userId WHERE Id=@bikeId";
+                    SqliteCommand command = new SqliteCommand(query, connection);
+                    command.Parameters.AddWithValue("@userId", userId);
+                    command.Parameters.AddWithValue("@bikeId", selected);
+                    command.ExecuteNonQuery();
+                }
+                reloadRentList();
+                reloadReturnList();
+            }
+        }
 
+        private void returnBtn_Click(object sender, EventArgs e)
+        {
+            var selected = returnList.SelectedItem as string;
+            var stationName = stationInput.Text;
+            int stationId = 0;
+            if (stationName == "")
+            {
+                MessageBox.Show("Proszę podać ID stacji, do której zwracasz rower.");
+                return;
+            }
+            else
+            {
+                if (connectionString != null && userId > 0)
+                {
+                    using (var connection = new SqliteConnection(connectionString))
+                    {
+                        connection.Open();
+                        string query = "SELECT Id FROM stations WHERE name=@stationName";
+                        SqliteCommand command = new SqliteCommand(query, connection);
+                        command.Parameters.AddWithValue("@stationName", stationName);
+                        SqliteDataReader reader = command.ExecuteReader();
+                        if (reader.Read())
+                        {
+                            stationId = reader.GetInt32(0);
+
+                        } else
+                        {
+                            MessageBox.Show("Podana stacja nie istnieje.");
+                            return;
+                        }
+                    }
+                }
+            }
+            if (selected != null)
+            {
+                using (var connection = new SqliteConnection(connectionString))
+                {
+                    connection.Open();
+                    string query = "UPDATE bikes SET statusBorrowed=NULL, station=@stationId WHERE Id=@bikeId";
+                    SqliteCommand command = new SqliteCommand(query, connection);
+                    command.Parameters.AddWithValue("@bikeId", selected);
+                    command.Parameters.AddWithValue("@stationId", stationId);
+                    command.ExecuteNonQuery();
+                }
+                reloadRentList();
+                reloadReturnList();
+            }
         }
     }
 }

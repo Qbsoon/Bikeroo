@@ -30,13 +30,13 @@
         {
             button1 = new Button();
             rentBtn = new Button();
-            button3 = new Button();
+            returnBtn = new Button();
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
             rentList = new ListBox();
             tabPage2 = new TabPage();
             returnList = new ListBox();
-            textBox1 = new TextBox();
+            stationInput = new TextBox();
             label1 = new Label();
             balanceLabel = new Label();
             tabControl1.SuspendLayout();
@@ -63,14 +63,15 @@
             rentBtn.UseVisualStyleBackColor = true;
             rentBtn.Click += rentBtn_click;
             // 
-            // button3
+            // returnBtn
             // 
-            button3.Location = new Point(595, 338);
-            button3.Name = "button3";
-            button3.Size = new Size(177, 54);
-            button3.TabIndex = 5;
-            button3.Text = "ZWRÓĆ";
-            button3.UseVisualStyleBackColor = true;
+            returnBtn.Location = new Point(595, 338);
+            returnBtn.Name = "returnBtn";
+            returnBtn.Size = new Size(177, 54);
+            returnBtn.TabIndex = 5;
+            returnBtn.Text = "ZWRÓĆ";
+            returnBtn.UseVisualStyleBackColor = true;
+            returnBtn.Click += returnBtn_Click;
             // 
             // tabControl1
             // 
@@ -106,9 +107,9 @@
             // tabPage2
             // 
             tabPage2.Controls.Add(returnList);
-            tabPage2.Controls.Add(textBox1);
+            tabPage2.Controls.Add(stationInput);
             tabPage2.Controls.Add(label1);
-            tabPage2.Controls.Add(button3);
+            tabPage2.Controls.Add(returnBtn);
             tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
@@ -126,12 +127,12 @@
             returnList.Size = new Size(769, 319);
             returnList.TabIndex = 9;
             // 
-            // textBox1
+            // stationInput
             // 
-            textBox1.Location = new Point(405, 348);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(184, 23);
-            textBox1.TabIndex = 8;
+            stationInput.Location = new Point(405, 348);
+            stationInput.Name = "stationInput";
+            stationInput.Size = new Size(184, 23);
+            stationInput.TabIndex = 8;
             // 
             // label1
             // 
@@ -175,12 +176,12 @@
 
         private Button button1;
         private Button rentBtn;
-        private Button button3;
+        private Button returnBtn;
         private TabControl tabControl1;
         private TabPage tabPage1;
         private TabPage tabPage2;
         private Label label1;
-        private TextBox textBox1;
+        private TextBox stationInput;
         private ListBox rentList;
         private ListBox returnList;
         private Label balanceLabel;

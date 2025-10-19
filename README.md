@@ -1,5 +1,4 @@
 # Bikeroo
-- [ ] Opcja Wyloguj
 - [ ] Database:
   - [ ] Tabela zgłoszeń
   - [ ] Tabela wypożyczeń
@@ -10,13 +9,15 @@
 - [ ] Klient:
   - [ ] Wypożycz:
     - [x] Wyświetlanie listy możliwych do wypożyczenia rowerów
-    - [ ] Umożliwienie wypożyczania
+    - [x] Umożliwienie wypożyczania
     - [ ] Dodanie okna do zgłaszania awarii
     - [x] Dodanie napisu z saldem konta
+    - [ ] Ustalenie i implementacja ceny wypożyczenia
     - [ ] (Opcjonalnie) Punkty lojalnościowe i jakieś mini gierki
   - [ ] Zwróć:
     - [x] Wyświetlanie listy wypożyczonych rowerów
-    - [ ] Umożliwanie zwracania
+    - [x] Umożliwanie zwracania
+  - [ ] Opcja Wyloguj
 - [ ] Inżynier:
   - [ ] Przenoszenie roweru z stacji do naprawy:
     - [ ] Przenoszenie roweru
@@ -28,6 +29,7 @@
   - [ ] Przenoszenie rowerów między stacjami:
     - [ ] Wyświetlanie listy rowerów obecnych na stacjach
     - [ ] Umożliwienie przenoszenia rowerów między stacjami
+  - [ ] Opcja Wyloguj
 - [ ] Admin:
   - [ ] Komunikat o zgłoszeniu stworzonym przez użytkownika [Podobnie, nie wiem, czy jest sens. (przyp.: Jakub)]
   - [ ] Rowery:
@@ -39,3 +41,4 @@
   - [ ] Konta:
     - [ ] Umożliwienie usuwania kont za pomocą okna (zawsze musi być przynajmniej jeden Admin)
     - [ ] Umożliwienie dodawania kont za pomocą okna
+  - [ ] Opcja Wyloguj
