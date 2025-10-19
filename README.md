@@ -1,4 +1,5 @@
 # Bikeroo
+- [ ] Opcja Wyloguj
 - [ ] Database:
   - [ ] Tabela zgłoszeń
   - [ ] Tabela wypożyczeń
@@ -35,6 +36,6 @@
   - [ ] Stacje:
     - [ ] Umożliwienie usuwania stacji za pomocą okna
     - [ ] Umożliwienie dodawania stacji za pomocą okna
-- [ ] Konta:
+  - [ ] Konta:
     - [ ] Umożliwienie usuwania kont za pomocą okna (zawsze musi być przynajmniej jeden Admin)
     - [ ] Umożliwienie dodawania kont za pomocą okna
