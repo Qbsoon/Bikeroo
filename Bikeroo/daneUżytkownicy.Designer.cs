@@ -28,27 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
-            addClient = new Button();
+            addUser = new Button();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
+            login = new TextBox();
+            password = new TextBox();
             groupBox1 = new GroupBox();
-            adminAdd = new RadioButton();
-            engenierAdd = new RadioButton();
             clientAdd = new RadioButton();
+            engenierAdd = new RadioButton();
+            adminAdd = new RadioButton();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
-            // addClient
+            // addUser
             // 
-            addClient.Location = new Point(20, 205);
-            addClient.Name = "addClient";
-            addClient.Size = new Size(101, 37);
-            addClient.TabIndex = 0;
-            addClient.Text = "potwierdz";
-            addClient.UseVisualStyleBackColor = true;
+            addUser.Location = new Point(20, 205);
+            addUser.Name = "addUser";
+            addUser.Size = new Size(101, 37);
+            addUser.TabIndex = 0;
+            addUser.Text = "potwierdz";
+            addUser.UseVisualStyleBackColor = true;
+            addUser.Click += addUser_Click;
             // 
             // label1
             // 
@@ -79,19 +80,19 @@
             label3.TabIndex = 3;
             label3.Text = "Uzupełnij dane";
             // 
-            // textBox1
+            // login
             // 
-            textBox1.Location = new Point(43, 42);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(100, 23);
-            textBox1.TabIndex = 4;
+            login.Location = new Point(43, 42);
+            login.Name = "login";
+            login.Size = new Size(100, 23);
+            login.TabIndex = 4;
             // 
-            // textBox2
+            // password
             // 
-            textBox2.Location = new Point(43, 71);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(100, 23);
-            textBox2.TabIndex = 5;
+            password.Location = new Point(43, 71);
+            password.Name = "password";
+            password.Size = new Size(100, 23);
+            password.TabIndex = 5;
             // 
             // groupBox1
             // 
@@ -106,17 +107,16 @@
             groupBox1.Text = "Typ konta";
             groupBox1.Enter += groupBox1_Enter;
             // 
-            // adminAdd
+            // clientAdd
             // 
-            adminAdd.AutoSize = true;
-            adminAdd.Location = new Point(40, 24);
-            adminAdd.Name = "adminAdd";
-            adminAdd.Size = new Size(61, 19);
-            adminAdd.TabIndex = 0;
-            adminAdd.TabStop = true;
-            adminAdd.Text = "Admin";
-            adminAdd.UseVisualStyleBackColor = true;
-            adminAdd.CheckedChanged += adminAdd_CheckedChanged;
+            clientAdd.AutoSize = true;
+            clientAdd.Location = new Point(40, 74);
+            clientAdd.Name = "clientAdd";
+            clientAdd.Size = new Size(55, 19);
+            clientAdd.TabIndex = 2;
+            clientAdd.TabStop = true;
+            clientAdd.Text = "Klient";
+            clientAdd.UseVisualStyleBackColor = true;
             // 
             // engenierAdd
             // 
@@ -129,16 +129,17 @@
             engenierAdd.Text = "Inżynier";
             engenierAdd.UseVisualStyleBackColor = true;
             // 
-            // clientAdd
+            // adminAdd
             // 
-            clientAdd.AutoSize = true;
-            clientAdd.Location = new Point(40, 74);
-            clientAdd.Name = "clientAdd";
-            clientAdd.Size = new Size(55, 19);
-            clientAdd.TabIndex = 2;
-            clientAdd.TabStop = true;
-            clientAdd.Text = "Klient";
-            clientAdd.UseVisualStyleBackColor = true;
+            adminAdd.AutoSize = true;
+            adminAdd.Location = new Point(40, 24);
+            adminAdd.Name = "adminAdd";
+            adminAdd.Size = new Size(61, 19);
+            adminAdd.TabIndex = 0;
+            adminAdd.TabStop = true;
+            adminAdd.Text = "Admin";
+            adminAdd.UseVisualStyleBackColor = true;
+            adminAdd.CheckedChanged += adminAdd_CheckedChanged;
             // 
             // daneUżytkownicy
             // 
@@ -146,12 +147,12 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(166, 256);
             Controls.Add(groupBox1);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            Controls.Add(password);
+            Controls.Add(login);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(addClient);
+            Controls.Add(addUser);
             Name = "daneUżytkownicy";
             Text = "daneUżytkownicy";
             groupBox1.ResumeLayout(false);
@@ -162,12 +163,12 @@
 
         #endregion
 
-        private Button addClient;
+        private Button addUser;
         private Label label1;
         private Label label2;
         private Label label3;
-        private TextBox textBox1;
-        private TextBox textBox2;
+        private TextBox login;
+        private TextBox password;
         private GroupBox groupBox1;
         private RadioButton clientAdd;
         private RadioButton engenierAdd;

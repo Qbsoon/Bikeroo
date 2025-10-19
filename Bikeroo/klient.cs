@@ -165,5 +165,10 @@ namespace Bikeroo
                 reloadReturnList();
             }
         }
+        private void reportButton_Click(object sender, EventArgs e)
+        {
+            zgloszenia zgloszenie = new zgloszenia();
+            zgloszenie.Show();
+        }
     }
 }

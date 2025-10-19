@@ -17,34 +17,35 @@ namespace Bikeroo
             InitializeComponent();
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
+        private void deleteStation_Click(object sender, EventArgs e)
         {
-
+            usun usunWindow = new usun();
+            usunWindow.Show();
         }
-
-        private void bikes_Click(object sender, EventArgs e)
+        private void deleteBike_Click(object sender, EventArgs e) 
         {
-
+            usun usunWindow = new usun();
+            usunWindow.Show();
         }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void deleteAccounts_Click(object sender, EventArgs e)
         {
-
+            usun usunWindow = new usun();
+            usunWindow.Show();
         }
-
-        private void label1_Click(object sender, EventArgs e)
+        private void addAccounts_Click(object sender, EventArgs e)
         {
-
+            daneUżytkownicy daneUżytkownik = new daneUżytkownicy();
+            daneUżytkownik.Show();
         }
-
-        private void label3_Click(object sender, EventArgs e)
+        private void addBike_Click(object sender, EventArgs e)
         {
-
+            daneRowery daneRowerow = new daneRowery();
+            daneRowerow.Show();
         }
-
-        private void button2_Click(object sender, EventArgs e)
+        private void addStation_Click(object sender, EventArgs e)
         {
-
+            daneStacja daneStacji = new daneStacja();
+            daneStacji.Show();
         }
     }
 }

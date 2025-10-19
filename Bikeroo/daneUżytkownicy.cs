@@ -31,5 +31,11 @@ namespace Bikeroo
         {
 
         }
+
+        private void addUser_Click(object sender, EventArgs e)
+        {
+            //funkcja dodania
+            this.Close();
+        }
     }
 }

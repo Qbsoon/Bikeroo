@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button1 = new Button();
+            reportButton = new Button();
             rentBtn = new Button();
             returnBtn = new Button();
             tabControl1 = new TabControl();
@@ -44,14 +44,15 @@
             tabPage2.SuspendLayout();
             SuspendLayout();
             // 
-            // button1
+            // reportButton
             // 
-            button1.Location = new Point(716, 3);
-            button1.Name = "button1";
-            button1.Size = new Size(82, 33);
-            button1.TabIndex = 0;
-            button1.Text = "Zgłoś";
-            button1.UseVisualStyleBackColor = true;
+            reportButton.Location = new Point(716, 3);
+            reportButton.Name = "reportButton";
+            reportButton.Size = new Size(82, 33);
+            reportButton.TabIndex = 0;
+            reportButton.Text = "Zgłoś";
+            reportButton.UseVisualStyleBackColor = true;
+            reportButton.Click += reportButton_Click;
             // 
             // rentBtn
             // 
@@ -159,7 +160,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(balanceLabel);
-            Controls.Add(button1);
+            Controls.Add(reportButton);
             Controls.Add(tabControl1);
             Name = "klient";
             Text = "klient";
@@ -174,7 +175,7 @@
 
         #endregion
 
-        private Button button1;
+        private Button reportButton;
         private Button rentBtn;
         private Button returnBtn;
         private TabControl tabControl1;

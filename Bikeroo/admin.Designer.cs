@@ -19,7 +19,6 @@
             }
             base.Dispose(disposing);
         }
-
         #region Windows Form Designer generated code
 
         /// <summary>
@@ -79,6 +78,7 @@
             deleteBike.TabIndex = 3;
             deleteBike.Text = "usuń";
             deleteBike.UseVisualStyleBackColor = true;
+            deleteBike.Click += deleteBike_Click;
             // 
             // addBike
             // 
@@ -88,7 +88,7 @@
             addBike.TabIndex = 2;
             addBike.Text = "dodaj";
             addBike.UseVisualStyleBackColor = true;
-            addBike.Click += button2_Click;
+            addBike.Click += addBike_Click;
             // 
             // panelBikes
             // 
@@ -124,6 +124,7 @@
             deleteStation.TabIndex = 5;
             deleteStation.Text = "usuń";
             deleteStation.UseVisualStyleBackColor = true;
+            deleteStation.Click += deleteStation_Click;
             // 
             // addStation
             // 
@@ -133,6 +134,7 @@
             addStation.TabIndex = 4;
             addStation.Text = "dodaj";
             addStation.UseVisualStyleBackColor = true;
+            addStation.Click += addStation_Click;
             // 
             // panelStation
             // 
@@ -167,6 +169,7 @@
             deleteAccounts.TabIndex = 5;
             deleteAccounts.Text = "usuń";
             deleteAccounts.UseVisualStyleBackColor = true;
+            deleteAccounts.Click += deleteAccounts_Click;
             // 
             // addAccounts
             // 
@@ -176,6 +179,7 @@
             addAccounts.TabIndex = 4;
             addAccounts.Text = "dodaj";
             addAccounts.UseVisualStyleBackColor = true;
+            addAccounts.Click += addAccounts_Click;
             // 
             // panelAccounts
             // 

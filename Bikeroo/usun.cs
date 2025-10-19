@@ -16,5 +16,14 @@ namespace Bikeroo
         {
             InitializeComponent();
         }
+        private void deleteNO_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        private void deleteYes_Click(object sender, EventArgs e)
+        {
+            //tu funkcja usuwająca
+            this.Close();
+        }
     }
 }

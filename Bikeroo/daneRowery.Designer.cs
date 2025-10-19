@@ -44,6 +44,7 @@
             addBikes.TabIndex = 0;
             addBikes.Text = "potwierdz";
             addBikes.UseVisualStyleBackColor = true;
+            addBikes.Click += addBikes_Click;
             // 
             // addBikeModel
             // 

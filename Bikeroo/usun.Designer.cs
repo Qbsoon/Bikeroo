@@ -41,6 +41,7 @@
             deleteYes.TabIndex = 0;
             deleteYes.Text = "Tak";
             deleteYes.UseVisualStyleBackColor = true;
+            deleteYes.Click += deleteYes_Click;
             // 
             // deleteNO
             // 
@@ -50,6 +51,7 @@
             deleteNO.TabIndex = 1;
             deleteNO.Text = "Nie";
             deleteNO.UseVisualStyleBackColor = true;
+            deleteNO.Click += deleteNO_Click;
             // 
             // label1
             // 

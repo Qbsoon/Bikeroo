@@ -42,6 +42,7 @@
             addStation.TabIndex = 0;
             addStation.Text = "potwierdz";
             addStation.UseVisualStyleBackColor = true;
+            addStation.Click += addStation_Click;
             // 
             // label1
             // 

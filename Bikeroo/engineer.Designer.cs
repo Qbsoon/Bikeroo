@@ -71,7 +71,7 @@
             toRepeir.TabIndex = 2;
             toRepeir.Text = "Do naprawy";
             toRepeir.UseVisualStyleBackColor = true;
-            toRepeir.Click += button1_Click;
+            toRepeir.Click += toRepeir_Click;
             // 
             // confirm
             // 
@@ -81,6 +81,7 @@
             confirm.TabIndex = 3;
             confirm.Text = "Potwierdz akcję";
             confirm.UseVisualStyleBackColor = true;
+            confirm.Click += confirm_Click;
             // 
             // nrStation
             // 

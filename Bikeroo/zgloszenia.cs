@@ -10,21 +10,15 @@ using System.Windows.Forms;
 
 namespace Bikeroo
 {
-    public partial class daneStacja : Form
+    public partial class zgloszenia : Form
     {
-        public daneStacja()
+        public zgloszenia()
         {
             InitializeComponent();
         }
-
-        private void label1_Click(object sender, EventArgs e)
+        private void submitButton_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void addStation_Click(object sender, EventArgs e)
-        {
-            //funkcja dodania
+            // funkcja wysyłająca zgłoszenie
             this.Close();
         }
     }

@@ -17,14 +17,19 @@ namespace Bikeroo
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void toRepeir_Click(object sender, EventArgs e)
         {
-
+            //funkcja dodawania do napraw
         }
 
         private void bikeList_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void confirm_Click(object sender, EventArgs e)
+        {
+            //funkcja zdejmowania z naprawy
         }
     }
 }
