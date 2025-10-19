@@ -69,5 +69,44 @@ namespace Bikeroo
                 MessageBox.Show("Invalid username or password.");
             }
         }
+
+        private void singInButton_Click(object sender, EventArgs e)
+        {
+            string usernameText = signUpLogin.Text;
+            string passwordText = signUpPassword.Text;
+            if (string.IsNullOrWhiteSpace(usernameText) || string.IsNullOrWhiteSpace(passwordText))
+            {
+                MessageBox.Show("Proszê wprowadziæ nazwê u¿ytkownika i has³o.");
+                return;
+            }
+            using (var connection = new SqliteConnection(connectionString))
+            {
+                connection.Open();
+
+                string checkUser = "SELECT COUNT(*) FROM users WHERE username=@username";
+                using (var checkCommand=new SqliteCommand(checkUser,connection))
+                {
+                    checkCommand.Parameters.AddWithValue("@username", usernameText);
+                    long count=(long)checkCommand.ExecuteScalar();
+                    if (count>0)
+                    {
+                        MessageBox.Show("U¿ytkownik o tej samej nazwie ju¿ istnieje.");
+                        return;
+                    }
+                }
+                string insertQuery = "INSERT INTO users (username, password, type, balance) VALUES (@username, @password, 2, 0)";
+                using (var insertCommand=new SqliteCommand(insertQuery,connection))
+                {
+                    insertCommand.Parameters.AddWithValue("@username", usernameText);
+                    insertCommand.Parameters.AddWithValue("@password", passwordText);
+                    insertCommand.ExecuteNonQuery();
+                }
+                signUpLogin.Text = "";
+                signUpPassword.Text = "";
+                signUpLogin.Focus();
+                MessageBox.Show("Rejestracja zakoñczona, mo¿esz siê teraz zalogowaæ");
+                //dodaj zapisywanie trwa³e bazy
+            }
+        }
     }
 }
