@@ -4,7 +4,7 @@
   - [ ] Tabela wypożyczeń
 - [ ] Main:
   - [x] Logowanie
-  - [ ] Tworzenie nowego konta
+  - [x] Tworzenie nowego konta
   - [ ] (Opcjonalne) Dodanie e-mail
 - [ ] Klient:
   - [ ] Wypożycz:
@@ -20,15 +20,15 @@
   - [ ] Opcja Wyloguj
 - [ ] Inżynier:
   - [ ] Przenoszenie roweru z stacji do naprawy:
-    - [ ] Przenoszenie roweru
+    - [x] Przenoszenie roweru
     - [ ] Komunikat o zgłoszeniu stworzonym przez użytkownika (sprzęt) [Nie wiem, czy jest sens. (przyp.: Jakub)]
   - [ ] Przenosze z naprawy
     - [ ] Wyświetlanie listy rowerów obecnie w naprawie
-    - [ ] Usuwanie rowerów
-    - [ ] Przenoszenie rowerów na stację
+    - [x] Usuwanie rowerów
+    - [x] Przenoszenie rowerów na stację
   - [ ] Przenoszenie rowerów między stacjami:
     - [ ] Wyświetlanie listy rowerów obecnych na stacjach
-    - [ ] Umożliwienie przenoszenia rowerów między stacjami
+    - [x] Umożliwienie przenoszenia rowerów między stacjami
   - [ ] Opcja Wyloguj
 - [ ] Admin:
   - [ ] Komunikat o zgłoszeniu stworzonym przez użytkownika [Podobnie, nie wiem, czy jest sens. (przyp.: Jakub)]
