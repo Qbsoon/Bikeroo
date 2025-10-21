@@ -72,8 +72,8 @@ namespace Bikeroo
 
         private void singInButton_Click(object sender, EventArgs e)
         {
-            string usernameText = signUpLogin.Text;
-            string passwordText = signUpPassword.Text;
+            string usernameText = login.Text;
+            string passwordText = password.Text;
             if (string.IsNullOrWhiteSpace(usernameText) || string.IsNullOrWhiteSpace(passwordText))
             {
                 MessageBox.Show("Proszê wprowadziæ nazwê u¿ytkownika i has³o.");
@@ -101,9 +101,9 @@ namespace Bikeroo
                     insertCommand.Parameters.AddWithValue("@password", passwordText);
                     insertCommand.ExecuteNonQuery();
                 }
-                signUpLogin.Text = "";
-                signUpPassword.Text = "";
-                signUpLogin.Focus();
+                login.Text = "";
+                password.Text = "";
+                login.Focus();
                 MessageBox.Show("Rejestracja zakoñczona, mo¿esz siê teraz zalogowaæ");
                 //dodaj zapisywanie trwa³e bazy
             }
