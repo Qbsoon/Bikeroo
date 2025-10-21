@@ -40,6 +40,7 @@
             deleteBike = new RadioButton();
             toStation = new RadioButton();
             label2 = new Label();
+            reports = new Button();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -169,11 +170,22 @@
             label2.TabIndex = 8;
             label2.Text = "Stacja";
             // 
+            // reports
+            // 
+            reports.Location = new Point(713, -2);
+            reports.Name = "reports";
+            reports.Size = new Size(75, 23);
+            reports.TabIndex = 8;
+            reports.Text = "zgłoszenia";
+            reports.UseVisualStyleBackColor = true;
+            reports.Click += reports_Click;
+            // 
             // engineer
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(reports);
             Controls.Add(tabControl1);
             Name = "engineer";
             Text = "engineer";
@@ -200,5 +212,6 @@
         private GroupBox groupBox1;
         private RadioButton deleteBike;
         private RadioButton toStation;
+        private Button reports;
     }
 }

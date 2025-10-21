@@ -22,7 +22,7 @@ namespace Bikeroo
             usun usunWindow = new usun();
             usunWindow.Show();
         }
-        private void deleteBike_Click(object sender, EventArgs e) 
+        private void deleteBike_Click(object sender, EventArgs e)
         {
             usun usunWindow = new usun();
             usunWindow.Show();
@@ -46,6 +46,12 @@ namespace Bikeroo
         {
             daneStacja daneStacji = new daneStacja();
             daneStacji.Show();
+        }
+
+        private void reports_Click(object sender, EventArgs e)
+        {
+            zgloszenia zgloszenia_sprawdz = new zgloszenia();
+            zgloszenia_sprawdz.Show();
         }
     }
 }

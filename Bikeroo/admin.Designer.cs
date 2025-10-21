@@ -40,6 +40,7 @@
             deleteAccounts = new Button();
             addAccounts = new Button();
             panelAccounts = new TableLayoutPanel();
+            reports = new Button();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -194,11 +195,22 @@
             panelAccounts.Size = new Size(759, 303);
             panelAccounts.TabIndex = 2;
             // 
+            // reports
+            // 
+            reports.Location = new Point(706, 7);
+            reports.Name = "reports";
+            reports.Size = new Size(75, 23);
+            reports.TabIndex = 1;
+            reports.Text = "zgłoszenia";
+            reports.UseVisualStyleBackColor = true;
+            reports.Click += reports_Click;
+            // 
             // admin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(reports);
             Controls.Add(tabControl1);
             Name = "admin";
             Text = "admin";
@@ -224,5 +236,6 @@
         private Button addStation;
         private Button deleteAccounts;
         private Button addAccounts;
+        private Button reports;
     }
 }

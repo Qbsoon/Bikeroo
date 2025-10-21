@@ -35,22 +35,21 @@
             label2 = new Label();
             label3 = new Label();
             singInButton = new Button();
+            report = new Button();
             SuspendLayout();
             // 
             // login
             // 
-            login.Location = new Point(361, 345);
-            login.Margin = new Padding(4, 5, 4, 5);
+            login.Location = new Point(253, 207);
             login.Name = "login";
-            login.Size = new Size(141, 31);
+            login.Size = new Size(100, 23);
             login.TabIndex = 0;
             // 
             // password
             // 
-            password.Location = new Point(587, 345);
-            password.Margin = new Padding(4, 5, 4, 5);
+            password.Location = new Point(411, 207);
             password.Name = "password";
-            password.Size = new Size(141, 31);
+            password.Size = new Size(100, 23);
             password.TabIndex = 1;
             password.UseSystemPasswordChar = true;
             // 
@@ -59,19 +58,17 @@
             label1.AutoSize = true;
             label1.BackColor = SystemColors.ActiveCaption;
             label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(417, 120);
-            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Location = new Point(292, 72);
             label1.Name = "label1";
-            label1.Size = new Size(304, 48);
+            label1.Size = new Size(204, 32);
             label1.TabIndex = 2;
             label1.Text = "BikeROOOOOOO";
             // 
             // loginButton
             // 
-            loginButton.Location = new Point(378, 439);
-            loginButton.Margin = new Padding(4, 5, 4, 5);
+            loginButton.Location = new Point(265, 263);
             loginButton.Name = "loginButton";
-            loginButton.Size = new Size(124, 38);
+            loginButton.Size = new Size(87, 23);
             loginButton.TabIndex = 3;
             loginButton.Text = "Zaloguj";
             loginButton.UseVisualStyleBackColor = true;
@@ -80,39 +77,47 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(413, 313);
-            label2.Margin = new Padding(4, 0, 4, 0);
+            label2.Location = new Point(289, 188);
             label2.Name = "label2";
-            label2.Size = new Size(56, 25);
+            label2.Size = new Size(37, 15);
             label2.TabIndex = 4;
             label2.Text = "Login";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(629, 313);
-            label3.Margin = new Padding(4, 0, 4, 0);
+            label3.Location = new Point(440, 188);
             label3.Name = "label3";
-            label3.Size = new Size(58, 25);
+            label3.Size = new Size(37, 15);
             label3.TabIndex = 5;
             label3.Text = "Hasło";
             // 
             // singInButton
             // 
-            singInButton.Location = new Point(597, 439);
-            singInButton.Margin = new Padding(4, 5, 4, 5);
+            singInButton.Location = new Point(418, 263);
             singInButton.Name = "singInButton";
-            singInButton.Size = new Size(124, 38);
+            singInButton.Size = new Size(87, 23);
             singInButton.TabIndex = 6;
             singInButton.Text = "zarejestruj się";
             singInButton.UseVisualStyleBackColor = true;
             singInButton.Click += singInButton_Click;
             // 
+            // report
+            // 
+            report.Location = new Point(712, 12);
+            report.Name = "report";
+            report.Size = new Size(75, 23);
+            report.TabIndex = 7;
+            report.Text = "zgłoś";
+            report.UseVisualStyleBackColor = true;
+            report.Click += report_Click;
+            // 
             // main
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1141, 750);
+            ClientSize = new Size(799, 450);
+            Controls.Add(report);
             Controls.Add(singInButton);
             Controls.Add(label3);
             Controls.Add(label2);
@@ -120,7 +125,6 @@
             Controls.Add(label1);
             Controls.Add(password);
             Controls.Add(login);
-            Margin = new Padding(4, 5, 4, 5);
             Name = "main";
             Text = "Form1";
             Load += main_Load;
@@ -137,5 +141,6 @@
         private Label label2;
         private Label label3;
         private Button singInButton;
+        private Button report;
     }
 }

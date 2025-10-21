@@ -45,7 +45,7 @@ namespace Bikeroo
                     bikeList.Items.Add(reader.GetInt32(0).ToString());
                 }
 
-            } 
+            }
         }
         private void loadRepairBikes()
         {
@@ -54,10 +54,11 @@ namespace Bikeroo
             {
                 connection.Open();
                 string query = "SELECT Id FROM bikes WHERE statusMaintenance=@userId";
-                var command=new SqliteCommand(query, connection);
+                var command = new SqliteCommand(query, connection);
                 command.Parameters.AddWithValue("@userID", userId);
-                var reader=command.ExecuteReader();
-                while (reader.Read()) { 
+                var reader = command.ExecuteReader();
+                while (reader.Read())
+                {
                     repeirList.Items.Add(reader.GetInt32(0).ToString());
                 }
 
@@ -70,14 +71,14 @@ namespace Bikeroo
         }
         private void toRepeir_Click(object sender, EventArgs e)
         {
-            var selected=bikeList.SelectedItems.Count > 0 ? bikeList.SelectedItems[0].Text : null;
-            if (selected != null) 
+            var selected = bikeList.SelectedItems.Count > 0 ? bikeList.SelectedItems[0].Text : null;
+            if (selected != null)
             {
                 using (var connection = new SqliteConnection(connectionString))
                 {
                     connection.Open();
                     string query = "UPDATE bikes SET statusMaintenance=@userId WHERE Id=@bikeId";
-                    var command= new SqliteCommand(query, connection);
+                    var command = new SqliteCommand(query, connection);
                     command.Parameters.AddWithValue("@userId", userId);
                     command.Parameters.AddWithValue("@bikeId", selected);
                     command.ExecuteNonQuery();
@@ -101,15 +102,15 @@ namespace Bikeroo
             }
             if (deleteBike.Checked)
             {
-                using (var connection=new SqliteConnection(connectionString))
+                using (var connection = new SqliteConnection(connectionString))
                 {
                     connection.Open();
                     string query = "DELETE FROM bikes WHERE Id=@bikeId";
-                    var command=new SqliteCommand(query, connection);
+                    var command = new SqliteCommand(query, connection);
                     command.Parameters.AddWithValue("@bikeId", selected);
-                    command.ExecuteNonQuery ();
+                    command.ExecuteNonQuery();
                 }
-                loadAvailableBikes ();
+                loadAvailableBikes();
                 loadRepairBikes();
             }
             if (toStation.Checked)
@@ -130,23 +131,29 @@ namespace Bikeroo
 
                     var checkStation = new SqliteCommand("SELECT COUNT(*) FROM stations WHERE Id=@id", connection);
                     checkStation.Parameters.AddWithValue("@id", stationId);
-                    long count=(long)checkStation.ExecuteScalar();
+                    long count = (long)checkStation.ExecuteScalar();
                     if (count == 0)
                     {
                         MessageBox.Show("Stacja o takim ID nie istnieje");
                         return;
                     }
-                    string query ="UPDATE bikes SET statusMaintenance = NULL, station=@stationId WHERE Id=@bikeId";
-                    var command= new SqliteCommand(query, connection);
+                    string query = "UPDATE bikes SET statusMaintenance = NULL, station=@stationId WHERE Id=@bikeId";
+                    var command = new SqliteCommand(query, connection);
                     command.Parameters.AddWithValue("@bikeId", selected);
-                    command.Parameters.AddWithValue("@stationId",stationId);
-                    command.ExecuteNonQuery ();
+                    command.Parameters.AddWithValue("@stationId", stationId);
+                    command.ExecuteNonQuery();
                 }
                 loadAvailableBikes();
                 loadRepairBikes();
                 return;
             }
             MessageBox.Show("Wybierz, czy chcesz usunąć rower, czy zwrócić go na wybraną stację");
+        }
+
+        private void reports_Click(object sender, EventArgs e)
+        {
+            zgloszenia zgloszenia_pokaz = new zgloszenia();
+            zgloszenia_pokaz.Show();
         }
     }
 }

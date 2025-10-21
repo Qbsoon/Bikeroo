@@ -84,18 +84,18 @@ namespace Bikeroo
                 connection.Open();
 
                 string checkUser = "SELECT COUNT(*) FROM users WHERE username=@username";
-                using (var checkCommand=new SqliteCommand(checkUser,connection))
+                using (var checkCommand = new SqliteCommand(checkUser, connection))
                 {
                     checkCommand.Parameters.AddWithValue("@username", usernameText);
-                    long count=(long)checkCommand.ExecuteScalar();
-                    if (count>0)
+                    long count = (long)checkCommand.ExecuteScalar();
+                    if (count > 0)
                     {
                         MessageBox.Show("U¿ytkownik o tej samej nazwie ju¿ istnieje.");
                         return;
                     }
                 }
                 string insertQuery = "INSERT INTO users (username, password, type, balance) VALUES (@username, @password, 2, 0)";
-                using (var insertCommand=new SqliteCommand(insertQuery,connection))
+                using (var insertCommand = new SqliteCommand(insertQuery, connection))
                 {
                     insertCommand.Parameters.AddWithValue("@username", usernameText);
                     insertCommand.Parameters.AddWithValue("@password", passwordText);
@@ -107,6 +107,13 @@ namespace Bikeroo
                 MessageBox.Show("Rejestracja zakoñczona, mo¿esz siê teraz zalogowaæ");
                 //dodaj zapisywanie trwa³e bazy
             }
+        }
+
+        private void report_Click(object sender, EventArgs e)
+        {
+            
+            zgloszenia zgloszenie = new zgloszenia();
+            zgloszenie.Show();
         }
     }
 }
