@@ -18,11 +18,12 @@ namespace Bikeroo
         }
         private void deleteNO_Click(object sender, EventArgs e)
         {
+            this.DialogResult=DialogResult.Cancel;
             this.Close();
         }
         private void deleteYes_Click(object sender, EventArgs e)
         {
-            //tu funkcja usuwająca
+            this.DialogResult = DialogResult.OK;
             this.Close();
         }
     }

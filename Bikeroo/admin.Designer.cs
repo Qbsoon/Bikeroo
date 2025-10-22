@@ -29,17 +29,17 @@
         {
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
+            bikeList = new ListView();
             deleteBike = new Button();
             addBike = new Button();
-            panelBikes = new TableLayoutPanel();
             tabPage2 = new TabPage();
+            stationList = new ListView();
             deleteStation = new Button();
             addStation = new Button();
-            panelStation = new TableLayoutPanel();
             tabPage3 = new TabPage();
+            userList = new ListView();
             deleteAccounts = new Button();
             addAccounts = new Button();
-            panelAccounts = new TableLayoutPanel();
             reports = new Button();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
@@ -60,9 +60,9 @@
             // 
             // tabPage1
             // 
+            tabPage1.Controls.Add(bikeList);
             tabPage1.Controls.Add(deleteBike);
             tabPage1.Controls.Add(addBike);
-            tabPage1.Controls.Add(panelBikes);
             tabPage1.Location = new Point(4, 24);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
@@ -70,6 +70,14 @@
             tabPage1.TabIndex = 0;
             tabPage1.Text = "rowery";
             tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // bikeList
+            // 
+            bikeList.Location = new Point(6, 6);
+            bikeList.Name = "bikeList";
+            bikeList.Size = new Size(756, 303);
+            bikeList.TabIndex = 4;
+            bikeList.UseCompatibleStateImageBehavior = false;
             // 
             // deleteBike
             // 
@@ -91,24 +99,11 @@
             addBike.UseVisualStyleBackColor = true;
             addBike.Click += addBike_Click;
             // 
-            // panelBikes
-            // 
-            panelBikes.ColumnCount = 2;
-            panelBikes.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            panelBikes.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            panelBikes.Location = new Point(3, 6);
-            panelBikes.Name = "panelBikes";
-            panelBikes.RowCount = 2;
-            panelBikes.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            panelBikes.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            panelBikes.Size = new Size(759, 303);
-            panelBikes.TabIndex = 0;
-            // 
             // tabPage2
             // 
+            tabPage2.Controls.Add(stationList);
             tabPage2.Controls.Add(deleteStation);
             tabPage2.Controls.Add(addStation);
-            tabPage2.Controls.Add(panelStation);
             tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
@@ -116,6 +111,14 @@
             tabPage2.TabIndex = 1;
             tabPage2.Text = "stacje";
             tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // stationList
+            // 
+            stationList.Location = new Point(6, 6);
+            stationList.Name = "stationList";
+            stationList.Size = new Size(756, 303);
+            stationList.TabIndex = 6;
+            stationList.UseCompatibleStateImageBehavior = false;
             // 
             // deleteStation
             // 
@@ -137,30 +140,25 @@
             addStation.UseVisualStyleBackColor = true;
             addStation.Click += addStation_Click;
             // 
-            // panelStation
-            // 
-            panelStation.ColumnCount = 2;
-            panelStation.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            panelStation.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            panelStation.Location = new Point(3, 6);
-            panelStation.Name = "panelStation";
-            panelStation.RowCount = 2;
-            panelStation.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            panelStation.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            panelStation.Size = new Size(759, 303);
-            panelStation.TabIndex = 1;
-            // 
             // tabPage3
             // 
+            tabPage3.Controls.Add(userList);
             tabPage3.Controls.Add(deleteAccounts);
             tabPage3.Controls.Add(addAccounts);
-            tabPage3.Controls.Add(panelAccounts);
             tabPage3.Location = new Point(4, 24);
             tabPage3.Name = "tabPage3";
             tabPage3.Size = new Size(768, 398);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "konta";
             tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // userList
+            // 
+            userList.Location = new Point(3, 3);
+            userList.Name = "userList";
+            userList.Size = new Size(756, 303);
+            userList.TabIndex = 6;
+            userList.UseCompatibleStateImageBehavior = false;
             // 
             // deleteAccounts
             // 
@@ -181,19 +179,6 @@
             addAccounts.Text = "dodaj";
             addAccounts.UseVisualStyleBackColor = true;
             addAccounts.Click += addAccounts_Click;
-            // 
-            // panelAccounts
-            // 
-            panelAccounts.ColumnCount = 2;
-            panelAccounts.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            panelAccounts.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            panelAccounts.Location = new Point(6, 3);
-            panelAccounts.Name = "panelAccounts";
-            panelAccounts.RowCount = 2;
-            panelAccounts.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            panelAccounts.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            panelAccounts.Size = new Size(759, 303);
-            panelAccounts.TabIndex = 2;
             // 
             // reports
             // 
@@ -226,16 +211,16 @@
         private TabControl tabControl1;
         private TabPage tabPage1;
         private TabPage tabPage2;
-        private TableLayoutPanel panelBikes;
-        private TableLayoutPanel panelStation;
         private Button addBike;
         private TabPage tabPage3;
-        private TableLayoutPanel panelAccounts;
-        private Button deleteBike;
-        private Button deleteStation;
         private Button addStation;
-        private Button deleteAccounts;
         private Button addAccounts;
         private Button reports;
+        private ListView bikeList;
+        private Button deleteBike;
+        private Button deleteStation;
+        private Button deleteAccounts;
+        private ListView stationList;
+        private ListView userList;
     }
 }
