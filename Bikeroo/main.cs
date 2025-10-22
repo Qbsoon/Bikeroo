@@ -54,6 +54,8 @@ namespace Bikeroo
             {
                 this.Hide();
                 engineer engineerForm = new engineer();
+                engineerForm.setUserId(userId);
+                engineerForm.setConnectionString(connectionString);
                 engineerForm.ShowDialog();
                 this.Close();
             }
@@ -61,6 +63,8 @@ namespace Bikeroo
             {
                 this.Hide();
                 admin adminForm = new admin();
+                adminForm.setUserId(userId);
+                adminForm.setConnectionString(connectionString);
                 adminForm.ShowDialog();
                 this.Close();
             }

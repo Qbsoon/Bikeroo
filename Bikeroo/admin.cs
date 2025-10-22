@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,87 +14,111 @@ namespace Bikeroo
 {
     public partial class admin : Form
     {
+        private int userId;
+        private string connectionString;
         public admin()
         {
             InitializeComponent();
-        }
-        private void adminLoad(object sender, EventArgs e)
-        {
             loadUsers();
             loadBikes();
             loadStations();
         }
+
+        public void setUserId(int id)
+        {
+            userId = id;
+        }
+
+        public void setConnectionString(string connString)
+        {
+            connectionString = connString;
+            loadUsers();
+            loadBikes();
+            loadStations();
+        }
+
         private void loadUsers()
         {
-            userList.Items.Clear();
-            using (var connection = new SqliteConnection("Data Source=database.sqlite"))
+            if (connectionString != null && userId > 0)
             {
-                connection.Open();
-                using (var command=new SqliteCommand("SELECT Id, username, type, balance FROM users",connection))
+                userTable.Rows.Clear();
+                using (var connection = new SqliteConnection(connectionString))
                 {
-                    using (var reader=command.ExecuteReader())
+                    connection.Open();
+                    string query = ("SELECT Id, username, type, balance FROM users");
+                    SqliteCommand command = new SqliteCommand(query, connection);
+                    SqliteDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
                     {
-                        while (reader.Read())
+                        int id = reader.GetInt32(0);
+                        string name = reader.GetString(1);
+                        int type = reader.GetInt32(2);
+                        string type_n = "";
+                        if (type == 0)
                         {
-                            int id = reader.GetInt32(0);
-                            string name = reader.GetString(1);
-                            int type = reader.GetInt32(2);
-                            float balance = reader.GetFloat(3);
-                            userList.Items.Add($"{id}: {name}, rola: {type}, balans konta: {balance}");
+                            type_n = "Admin";
                         }
+                        else if (type == 1)
+                        {
+                            type_n = "Inżynier";
+                        }
+                        else if (type == 2)
+                        {
+                            type_n = "Klient";
+                        }
+                        float balance = reader.GetFloat(3);
+                        userTable.Rows.Add(id, name, type_n, balance);
                     }
                 }
             }
         }
         private void loadBikes()
         {
-            bikeList.Items.Clear();
-            using (var connection = new SqliteConnection("Data Source=database.sqlite"))
+            if (connectionString != null && userId > 0)
             {
-                connection.Open();
-                string query = @"SELECT b.Id,b.model,s.name AS stationName, b.statusMaintenance FROM bikes b JOIN stations s ON b.station=s.Id";
-                using (var command = new SqliteCommand(query, connection))
+                bikeTable.Rows.Clear();
+                using (var connection = new SqliteConnection(connectionString))
                 {
-                    using (var reader = command.ExecuteReader())
+                    connection.Open();
+                    string query = @"SELECT b.Id,b.model,s.name AS stationName, b.statusBorrowed, b.statusMaintenance FROM bikes b JOIN stations s ON b.station=s.Id";
+                    SqliteCommand command = new SqliteCommand(query, connection);
+                    SqliteDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
                     {
-                        while (reader.Read())
-                        {
-                            int id = reader.GetInt32(0);
-                            string model = reader.GetString(1);
-                            string stationName=reader.GetString(2);
-                            bool inMaintenance=!reader.IsDBNull(3);
-                            bikeList.Items.Add($"{id}: {model}, Stacja:{stationName}, Naprawa: {inMaintenance}");
-                        }
+                        int id = reader.GetInt32(0);
+                        string model = reader.GetString(1);
+                        string stationName = reader.GetString(2);
+                        string statusBorrowed = reader.IsDBNull(3) ? "" : reader.GetString(3);
+                        string statusMaintenance = reader.IsDBNull(4) ? "" : reader.GetString(4);
+                        bikeTable.Rows.Add(id, model, stationName, statusBorrowed, statusMaintenance);
                     }
                 }
             }
         }
         private void loadStations()
         {
-            stationList.Items.Clear();
-            using (var connection = new SqliteConnection("Data Source=database.sqlite"))
+            if (connectionString != null && userId > 0)
             {
-                connection.Open();
-                string query = @"SELECT s.Id,s.name,COUNT(b.Id) AS bikesCount, FROM stations s LEFT JOIN bikes b ON b.station=s.Id GROUP BY s.Id, s.name";
-                using (var command = new SqliteCommand(query, connection))
+                stationTable.Rows.Clear();
+                using (var connection = new SqliteConnection(connectionString))
                 {
-                    using (var reader = command.ExecuteReader())
+                    connection.Open();
+                    string query = @"SELECT s.Id,s.name,COUNT(b.Id) AS bikesCount FROM stations s LEFT JOIN bikes b ON b.station=s.Id GROUP BY s.Id, s.name";
+                    SqliteCommand command = new SqliteCommand(query, connection);
+                    SqliteDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
                     {
-                        while (reader.Read())
-                        {
-                            int id = reader.GetInt32(0);
-                            string name = reader.GetString(1);
-                            int bikesCount = reader.GetInt32(2);
-
-                            stationList.Items.Add($"{id}: {name}, Rowety na stacji: {bikesCount}");
-                        }
+                        int id = reader.GetInt32(0);
+                        string name = reader.GetString(1);
+                        int bikesCount = reader.GetInt32(2);
+                        stationTable.Rows.Add(id, name, bikesCount);
                     }
                 }
             }
         }
-        private void deleteSelected(string table, ListView list, Action reloadMethod)
+        private void deleteSelected(string table, DataGridView tableObj, Action reloadMethod)
         {
-            if (list.SelectedItems.Count == 0)
+            if (tableObj.SelectedRows.Count == 0)
             {
                 MessageBox.Show("Wybierz element do usunięcia");
                 return;
@@ -103,30 +128,28 @@ namespace Bikeroo
             {
                 return;
             }
-            string selected = list.SelectedItems[0].Text;
-            int id = int.Parse(selected.Split(':')[0]);
-            using (var connection = new SqliteConnection("Data Source=database.sqlite"))
+            int id = Convert.ToInt32(tableObj.SelectedRows[0].Cells[0].Value);
+            using (var connection = new SqliteConnection(connectionString))
             {
                 connection.Open();
-                using (var command = new SqliteCommand($"DELETE FROM {table} WHERE Id=@id",connection))
-                {
-                    command.Parameters.AddWithValue("@id", id);
-                    command.ExecuteNonQuery();
-                }
+                string query = $"DELETE FROM {table} WHERE Id=@id";
+                SqliteCommand command = new SqliteCommand(query, connection);
+                command.Parameters.AddWithValue("@id", id);
+                command.ExecuteNonQuery();
             }
             reloadMethod();
         }
         private void deleteStation_Click(object sender, EventArgs e)
         {
-            deleteSelected("stations", stationList, loadStations);
+            deleteSelected("stations", stationTable, loadStations);
         }
         private void deleteBike_Click(object sender, EventArgs e)
         {
-            deleteSelected("bikes", bikeList, loadBikes);
+            deleteSelected("bikes", bikeTable, loadBikes);
         }
         private void deleteAccounts_Click(object sender, EventArgs e)
         {
-            deleteSelected("users", userList, loadUsers);
+            deleteSelected("users", userTable, loadUsers);
         }
         private void addAccounts_Click(object sender, EventArgs e)
         {

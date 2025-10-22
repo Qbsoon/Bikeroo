@@ -28,9 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            bikeList = new ListView();
-            repeirList = new ListView();
-            toRepeir = new Button();
+            toRepair = new Button();
             confirm = new Button();
             nrStation = new TextBox();
             tabControl1 = new TabControl();
@@ -41,44 +39,31 @@
             toStation = new RadioButton();
             label2 = new Label();
             reports = new Button();
+            bikeList = new ListBox();
+            repairList = new ListBox();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
-            // bikeList
+            // toRepair
             // 
-            bikeList.Location = new Point(6, 6);
-            bikeList.Name = "bikeList";
-            bikeList.Size = new Size(769, 394);
-            bikeList.TabIndex = 0;
-            bikeList.UseCompatibleStateImageBehavior = false;
-            bikeList.SelectedIndexChanged += bikeList_SelectedIndexChanged;
-            // 
-            // repeirList
-            // 
-            repeirList.Location = new Point(6, 5);
-            repeirList.Name = "repeirList";
-            repeirList.Size = new Size(573, 397);
-            repeirList.TabIndex = 1;
-            repeirList.UseCompatibleStateImageBehavior = false;
-            // 
-            // toRepeir
-            // 
-            toRepeir.Location = new Point(629, 319);
-            toRepeir.Name = "toRepeir";
-            toRepeir.Size = new Size(139, 81);
-            toRepeir.TabIndex = 2;
-            toRepeir.Text = "Do naprawy";
-            toRepeir.UseVisualStyleBackColor = true;
-            toRepeir.Click += toRepeir_Click;
+            toRepair.Location = new Point(899, 532);
+            toRepair.Margin = new Padding(4, 5, 4, 5);
+            toRepair.Name = "toRepair";
+            toRepair.Size = new Size(199, 135);
+            toRepair.TabIndex = 2;
+            toRepair.Text = "Do naprawy";
+            toRepair.UseVisualStyleBackColor = true;
+            toRepair.Click += toRepair_Click;
             // 
             // confirm
             // 
-            confirm.Location = new Point(629, 321);
+            confirm.Location = new Point(899, 535);
+            confirm.Margin = new Padding(4, 5, 4, 5);
             confirm.Name = "confirm";
-            confirm.Size = new Size(139, 81);
+            confirm.Size = new Size(199, 135);
             confirm.TabIndex = 3;
             confirm.Text = "Potwierdz akcję";
             confirm.UseVisualStyleBackColor = true;
@@ -86,44 +71,48 @@
             // 
             // nrStation
             // 
-            nrStation.Location = new Point(629, 290);
+            nrStation.Location = new Point(899, 483);
+            nrStation.Margin = new Padding(4, 5, 4, 5);
             nrStation.Name = "nrStation";
-            nrStation.Size = new Size(139, 23);
+            nrStation.Size = new Size(197, 31);
             nrStation.TabIndex = 5;
             // 
             // tabControl1
             // 
             tabControl1.Controls.Add(tabPage1);
             tabControl1.Controls.Add(tabPage2);
-            tabControl1.Location = new Point(12, 12);
+            tabControl1.Location = new Point(17, 20);
+            tabControl1.Margin = new Padding(4, 5, 4, 5);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(789, 434);
+            tabControl1.Size = new Size(1127, 723);
             tabControl1.TabIndex = 7;
             // 
             // tabPage1
             // 
-            tabPage1.Controls.Add(toRepeir);
+            tabPage1.Controls.Add(toRepair);
             tabPage1.Controls.Add(bikeList);
-            tabPage1.Location = new Point(4, 24);
+            tabPage1.Location = new Point(4, 34);
+            tabPage1.Margin = new Padding(4, 5, 4, 5);
             tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(781, 406);
+            tabPage1.Padding = new Padding(4, 5, 4, 5);
+            tabPage1.Size = new Size(1119, 685);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Przenoszenie z stacji";
             tabPage1.UseVisualStyleBackColor = true;
             // 
             // tabPage2
             // 
+            tabPage2.Controls.Add(repairList);
             tabPage2.Controls.Add(groupBox1);
             tabPage2.Controls.Add(label2);
-            tabPage2.Controls.Add(repeirList);
             tabPage2.Controls.Add(confirm);
             tabPage2.Controls.Add(nrStation);
-            tabPage2.Location = new Point(4, 24);
+            tabPage2.Location = new Point(4, 34);
+            tabPage2.Margin = new Padding(4, 5, 4, 5);
             tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(781, 406);
+            tabPage2.Padding = new Padding(4, 5, 4, 5);
+            tabPage2.Size = new Size(1119, 685);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Przenoszenie z naprawy";
             tabPage2.UseVisualStyleBackColor = true;
@@ -132,9 +121,11 @@
             // 
             groupBox1.Controls.Add(deleteBike);
             groupBox1.Controls.Add(toStation);
-            groupBox1.Location = new Point(625, 208);
+            groupBox1.Location = new Point(893, 347);
+            groupBox1.Margin = new Padding(4, 5, 4, 5);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(143, 76);
+            groupBox1.Padding = new Padding(4, 5, 4, 5);
+            groupBox1.Size = new Size(204, 127);
             groupBox1.TabIndex = 10;
             groupBox1.TabStop = false;
             groupBox1.Text = "Podjęta akcja";
@@ -142,9 +133,10 @@
             // deleteBike
             // 
             deleteBike.AutoSize = true;
-            deleteBike.Location = new Point(17, 47);
+            deleteBike.Location = new Point(24, 78);
+            deleteBike.Margin = new Padding(4, 5, 4, 5);
             deleteBike.Name = "deleteBike";
-            deleteBike.Size = new Size(85, 19);
+            deleteBike.Size = new Size(127, 29);
             deleteBike.TabIndex = 11;
             deleteBike.TabStop = true;
             deleteBike.Text = "Usuń rower";
@@ -153,9 +145,10 @@
             // toStation
             // 
             toStation.AutoSize = true;
-            toStation.Location = new Point(17, 22);
+            toStation.Location = new Point(24, 37);
+            toStation.Margin = new Padding(4, 5, 4, 5);
             toStation.Name = "toStation";
-            toStation.Size = new Size(105, 19);
+            toStation.Size = new Size(156, 29);
             toStation.TabIndex = 9;
             toStation.TabStop = true;
             toStation.Text = "Zwrot na stację";
@@ -164,29 +157,50 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(585, 293);
+            label2.Location = new Point(836, 488);
+            label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(38, 15);
+            label2.Size = new Size(57, 25);
             label2.TabIndex = 8;
             label2.Text = "Stacja";
             // 
             // reports
             // 
-            reports.Location = new Point(713, -2);
+            reports.Location = new Point(1019, -3);
+            reports.Margin = new Padding(4, 5, 4, 5);
             reports.Name = "reports";
-            reports.Size = new Size(75, 23);
+            reports.Size = new Size(107, 38);
             reports.TabIndex = 8;
             reports.Text = "zgłoszenia";
             reports.UseVisualStyleBackColor = true;
             reports.Click += reports_Click;
             // 
+            // bikeList
+            // 
+            bikeList.FormattingEnabled = true;
+            bikeList.ItemHeight = 25;
+            bikeList.Location = new Point(9, 10);
+            bikeList.Name = "bikeList";
+            bikeList.Size = new Size(1097, 654);
+            bikeList.TabIndex = 3;
+            // 
+            // repairList
+            // 
+            repairList.FormattingEnabled = true;
+            repairList.ItemHeight = 25;
+            repairList.Location = new Point(9, 8);
+            repairList.Name = "repairList";
+            repairList.Size = new Size(817, 654);
+            repairList.TabIndex = 11;
+            // 
             // engineer
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1143, 750);
             Controls.Add(reports);
             Controls.Add(tabControl1);
+            Margin = new Padding(4, 5, 4, 5);
             Name = "engineer";
             Text = "engineer";
             tabControl1.ResumeLayout(false);
@@ -199,10 +213,7 @@
         }
 
         #endregion
-
-        private ListView bikeList;
-        private ListView repeirList;
-        private Button toRepeir;
+        private Button toRepair;
         private Button confirm;
         private TextBox nrStation;
         private TabControl tabControl1;
@@ -213,5 +224,7 @@
         private RadioButton deleteBike;
         private RadioButton toStation;
         private Button reports;
+        private ListBox bikeList;
+        private ListBox repairList;
     }
 }
