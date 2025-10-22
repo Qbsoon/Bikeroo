@@ -10,7 +10,7 @@
   - [ ] Wypożycz:
     - [x] Wyświetlanie listy możliwych do wypożyczenia rowerów
     - [x] Umożliwienie wypożyczania
-    - [ ] Dodanie okna do zgłaszania awarii
+    - [x] Dodanie okna do zgłaszania awarii
     - [x] Dodanie napisu z saldem konta
     - [ ] Ustalenie i implementacja ceny wypożyczenia
     - [ ] (Opcjonalnie) Punkty lojalnościowe i jakieś mini gierki
@@ -19,9 +19,11 @@
     - [x] Umożliwanie zwracania
   - [ ] Opcja Wyloguj
 - [ ] Inżynier:
+  - [ ] Ekran zgłoszeń (zgłoszenia dotyczące rowerów/stacji):
+    - [ ] Usuwanie zgłoszeń
+    - [ ] Odznaczanie zgłoszeń
   - [ ] Przenoszenie roweru z stacji do naprawy:
     - [x] Przenoszenie roweru
-    - [ ] Komunikat o zgłoszeniu stworzonym przez użytkownika (sprzęt) [Nie wiem, czy jest sens. (przyp.: Jakub)]
   - [ ] Przenosze z naprawy
     - [ ] Wyświetlanie listy rowerów obecnie w naprawie
     - [x] Usuwanie rowerów
@@ -31,14 +33,16 @@
     - [x] Umożliwienie przenoszenia rowerów między stacjami
   - [ ] Opcja Wyloguj
 - [ ] Admin:
-  - [ ] Komunikat o zgłoszeniu stworzonym przez użytkownika [Podobnie, nie wiem, czy jest sens. (przyp.: Jakub)]
+  - [ ] Ekran zgłoszeń (wszystkie zgłoszenia):
+    - [ ] Usuwanie zgłoszeń
+    - [ ] Odznaczanie zgłoszeń
   - [ ] Rowery:
-    - [ ] Umożliwienie usuwania rowerów za pomocą okna
+    - [x] Umożliwienie usuwania rowerów za pomocą okna
     - [ ] Umożliwienie dodawania rowerów za pomocą okna
   - [ ] Stacje:
-    - [ ] Umożliwienie usuwania stacji za pomocą okna
+    - [x] Umożliwienie usuwania stacji za pomocą okna
     - [ ] Umożliwienie dodawania stacji za pomocą okna
   - [ ] Konta:
-    - [ ] Umożliwienie usuwania kont za pomocą okna (zawsze musi być przynajmniej jeden Admin)
+    - [x] Umożliwienie usuwania kont za pomocą okna (zawsze musi być przynajmniej jeden Admin)
     - [ ] Umożliwienie dodawania kont za pomocą okna
   - [ ] Opcja Wyloguj
