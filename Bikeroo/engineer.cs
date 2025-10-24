@@ -169,5 +169,18 @@ namespace Bikeroo
             zgloszenia zgloszenia_pokaz = new zgloszenia();
             zgloszenia_pokaz.Show();
         }
+
+        private void addBike_Click(object sender, EventArgs e)
+        {
+            daneRowery dodajRower = new daneRowery();
+            dodajRower.setConnectionString(connectionString);
+            dodajRower.FormClosed += addBikeEnd;
+            dodajRower.Show();
+        }
+        private void addBikeEnd(object sender, EventArgs e)
+        {
+            loadAvailableBikes();
+            MessageBox.Show("Rower dodano pomyślnie");
+        }
     }
 }

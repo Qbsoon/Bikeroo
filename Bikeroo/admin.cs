@@ -129,6 +129,29 @@ namespace Bikeroo
                 return;
             }
             int id = Convert.ToInt32(tableObj.SelectedRows[0].Cells[0].Value);
+            if (userId == id)
+            {
+                MessageBox.Show("Nie możesz usunąć samego siebie");
+                return;
+            }
+            /* jeśli admin chciałby usuąć wszystkich adminów to i tak nie może usunąć siebie, czyli zawsze będzie co najmniej jeden admin
+               if (table=="users"&& tableObj.SelectedRows[0].Cells[2].Value.ToString()=="Admin")
+            {
+                int adminCount;
+                using (var connection=new SqliteConnection(connectionString))
+                {
+                    connection.Open();
+                    string query = "SELECT COUNT(*) FROM users WHERE type=0";
+                    SqliteCommand command=new SqliteCommand(query, connection);
+                    adminCount = Convert.ToInt32(command.ExecuteScalar());
+                }
+                if (adminCount == 1)
+                {
+                    MessageBox.Show("Nie można usunąć jedynego Admina");
+                    return;
+                }
+            }
+            */
             using (var connection = new SqliteConnection(connectionString))
             {
                 connection.Open();
@@ -158,13 +181,27 @@ namespace Bikeroo
         }
         private void addBike_Click(object sender, EventArgs e)
         {
-            daneRowery daneRowerow = new daneRowery();
-            daneRowerow.Show();
+            daneRowery dodajRower = new daneRowery();
+            dodajRower.setConnectionString(connectionString);
+            dodajRower.FormClosed += addBikeEnd;
+            dodajRower.Show();
+        }
+        private void addBikeEnd(object sender, EventArgs e)
+        {
+            loadBikes();
+            MessageBox.Show("Rower dodano pomyślnie");
         }
         private void addStation_Click(object sender, EventArgs e)
         {
             daneStacja daneStacji = new daneStacja();
+            daneStacji.setConnectionString(connectionString);
+            daneStacji.FormClosed += addStationEnd;
             daneStacji.Show();
+        }
+        private void addStationEnd(object sender, EventArgs e)
+        {
+            loadStations();
+            MessageBox.Show("Stacja dodana pomyślnie");
         }
 
         private void reports_Click(object sender, EventArgs e)
