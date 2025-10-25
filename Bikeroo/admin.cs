@@ -177,7 +177,14 @@ namespace Bikeroo
         private void addAccounts_Click(object sender, EventArgs e)
         {
             daneUżytkownicy daneUżytkownik = new daneUżytkownicy();
+            daneUżytkownik.setConnectionString(connectionString);
+            daneUżytkownik.FormClosed += addAccouunt;
             daneUżytkownik.Show();
+        }
+        private void addAccouunt(object sender, EventArgs e)
+        {
+            loadUsers();
+            MessageBox.Show("Dodano konto");
         }
         private void addBike_Click(object sender, EventArgs e)
         {
