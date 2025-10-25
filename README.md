@@ -14,7 +14,7 @@
     - [x] Dodanie napisu z saldem konta
     - [ ] Ustalenie i implementacja ceny wypożyczenia
     - [ ] (Opcjonalnie) Punkty lojalnościowe i jakieś mini gierki
-  - [ ] Zwróć:
+  - [x] Zwróć:
     - [x] Wyświetlanie listy wypożyczonych rowerów
     - [x] Umożliwanie zwracania
   - [ ] Opcja Wyloguj
@@ -22,7 +22,7 @@
   - [ ] Ekran zgłoszeń (zgłoszenia dotyczące rowerów/stacji):
     - [ ] Usuwanie zgłoszeń
     - [ ] Odznaczanie zgłoszeń
-  - [ ] Przenoszenie roweru z stacji do naprawy:
+  - [x] Przenoszenie roweru z stacji do naprawy:
     - [x] Przenoszenie roweru
   - [ ] Przenosze z naprawy
     - [ ] Wyświetlanie listy rowerów obecnie w naprawie
@@ -36,13 +36,13 @@
   - [ ] Ekran zgłoszeń (wszystkie zgłoszenia):
     - [ ] Usuwanie zgłoszeń
     - [ ] Odznaczanie zgłoszeń
-  - [ ] Rowery:
+  - [x] Rowery:
     - [x] Umożliwienie usuwania rowerów za pomocą okna
-    - [ ] Umożliwienie dodawania rowerów za pomocą okna
-  - [ ] Stacje:
+    - [x] Umożliwienie dodawania rowerów za pomocą okna
+  - [x] Stacje:
     - [x] Umożliwienie usuwania stacji za pomocą okna
-    - [ ] Umożliwienie dodawania stacji za pomocą okna
-  - [ ] Konta:
+    - [x] Umożliwienie dodawania stacji za pomocą okna
+  - [x] Konta:
     - [x] Umożliwienie usuwania kont za pomocą okna (zawsze musi być przynajmniej jeden Admin)
-    - [ ] Umożliwienie dodawania kont za pomocą okna
+    - [x] Umożliwienie dodawania kont za pomocą okna
   - [ ] Opcja Wyloguj
