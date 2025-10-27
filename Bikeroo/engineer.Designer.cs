@@ -33,6 +33,7 @@
             nrStation = new TextBox();
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
+            addBike = new Button();
             bikeList = new ListBox();
             tabPage2 = new TabPage();
             repairList = new ListBox();
@@ -41,7 +42,7 @@
             toStation = new RadioButton();
             label2 = new Label();
             reports = new Button();
-            addBike = new Button();
+            logOut = new Button();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -50,7 +51,7 @@
             // 
             // toRepair
             // 
-            toRepair.Location = new Point(629, 319);
+            toRepair.Location = new Point(629, 300);
             toRepair.Name = "toRepair";
             toRepair.Size = new Size(139, 81);
             toRepair.TabIndex = 2;
@@ -60,7 +61,7 @@
             // 
             // confirm
             // 
-            confirm.Location = new Point(629, 321);
+            confirm.Location = new Point(629, 300);
             confirm.Name = "confirm";
             confirm.Size = new Size(139, 81);
             confirm.TabIndex = 3;
@@ -70,7 +71,7 @@
             // 
             // nrStation
             // 
-            nrStation.Location = new Point(629, 290);
+            nrStation.Location = new Point(629, 271);
             nrStation.Name = "nrStation";
             nrStation.Size = new Size(139, 23);
             nrStation.TabIndex = 5;
@@ -82,7 +83,7 @@
             tabControl1.Location = new Point(12, 12);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(789, 434);
+            tabControl1.Size = new Size(789, 405);
             tabControl1.TabIndex = 7;
             // 
             // tabPage1
@@ -92,20 +93,30 @@
             tabPage1.Controls.Add(bikeList);
             tabPage1.Location = new Point(4, 24);
             tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new Padding(3, 3, 3, 3);
-            tabPage1.Size = new Size(781, 406);
+            tabPage1.Padding = new Padding(3);
+            tabPage1.Size = new Size(781, 377);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Przenoszenie z stacji";
             tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // addBike
+            // 
+            addBike.Location = new Point(629, 218);
+            addBike.Name = "addBike";
+            addBike.Size = new Size(139, 73);
+            addBike.TabIndex = 4;
+            addBike.Text = "Dodaj rower";
+            addBike.UseVisualStyleBackColor = true;
+            addBike.Click += addBike_Click;
             // 
             // bikeList
             // 
             bikeList.FormattingEnabled = true;
             bikeList.ItemHeight = 15;
             bikeList.Location = new Point(6, 6);
-            bikeList.Margin = new Padding(2, 2, 2, 2);
+            bikeList.Margin = new Padding(2);
             bikeList.Name = "bikeList";
-            bikeList.Size = new Size(769, 394);
+            bikeList.Size = new Size(769, 364);
             bikeList.TabIndex = 3;
             // 
             // tabPage2
@@ -117,8 +128,8 @@
             tabPage2.Controls.Add(nrStation);
             tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(3, 3, 3, 3);
-            tabPage2.Size = new Size(781, 406);
+            tabPage2.Padding = new Padding(3);
+            tabPage2.Size = new Size(781, 377);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Przenoszenie z naprawy";
             tabPage2.UseVisualStyleBackColor = true;
@@ -128,16 +139,16 @@
             repairList.FormattingEnabled = true;
             repairList.ItemHeight = 15;
             repairList.Location = new Point(6, 5);
-            repairList.Margin = new Padding(2, 2, 2, 2);
+            repairList.Margin = new Padding(2);
             repairList.Name = "repairList";
-            repairList.Size = new Size(573, 394);
+            repairList.Size = new Size(573, 364);
             repairList.TabIndex = 11;
             // 
             // groupBox1
             // 
             groupBox1.Controls.Add(deleteBike);
             groupBox1.Controls.Add(toStation);
-            groupBox1.Location = new Point(625, 208);
+            groupBox1.Location = new Point(625, 189);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(143, 76);
             groupBox1.TabIndex = 10;
@@ -169,11 +180,12 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(585, 293);
+            label2.Location = new Point(585, 279);
             label2.Name = "label2";
             label2.Size = new Size(38, 15);
             label2.TabIndex = 8;
             label2.Text = "Stacja";
+            label2.Click += label2_Click;
             // 
             // reports
             // 
@@ -185,21 +197,23 @@
             reports.UseVisualStyleBackColor = true;
             reports.Click += reports_Click;
             // 
-            // addBike
+            // logOut
             // 
-            addBike.Location = new Point(629, 240);
-            addBike.Name = "addBike";
-            addBike.Size = new Size(139, 73);
-            addBike.TabIndex = 4;
-            addBike.Text = "Dodaj rower";
-            addBike.UseVisualStyleBackColor = true;
-            addBike.Click += addBike_Click;
+            logOut.BackColor = SystemColors.ActiveCaption;
+            logOut.Location = new Point(713, 419);
+            logOut.Name = "logOut";
+            logOut.Size = new Size(75, 23);
+            logOut.TabIndex = 9;
+            logOut.Text = "WYLOGUJ";
+            logOut.UseVisualStyleBackColor = false;
+            logOut.Click += logOut_Click;
             // 
             // engineer
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(logOut);
             Controls.Add(reports);
             Controls.Add(tabControl1);
             Name = "engineer";
@@ -228,5 +242,6 @@
         private ListBox bikeList;
         private ListBox repairList;
         private Button addBike;
+        private Button logOut;
     }
 }

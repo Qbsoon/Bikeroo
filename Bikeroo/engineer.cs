@@ -182,5 +182,18 @@ namespace Bikeroo
             loadAvailableBikes();
             MessageBox.Show("Rower dodano pomyślnie");
         }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void logOut_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            main mainForm = new main();
+            mainForm.ShowDialog();
+            this.Close();
+        }
     }
 }

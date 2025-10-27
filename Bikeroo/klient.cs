@@ -142,7 +142,8 @@ namespace Bikeroo
                         {
                             stationId = reader.GetInt32(0);
 
-                        } else
+                        }
+                        else
                         {
                             MessageBox.Show("Podana stacja nie istnieje.");
                             return;
@@ -169,6 +170,14 @@ namespace Bikeroo
         {
             zgloszenia zgloszenie = new zgloszenia();
             zgloszenie.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            main mainForm = new main();
+            mainForm.ShowDialog();
+            this.Close();
         }
     }
 }

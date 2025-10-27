@@ -39,6 +39,7 @@
             stationInput = new TextBox();
             label1 = new Label();
             balanceLabel = new Label();
+            button1 = new Button();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -154,11 +155,23 @@
             balanceLabel.TabIndex = 7;
             balanceLabel.Text = "Saldo:";
             // 
+            // button1
+            // 
+            button1.BackColor = SystemColors.ActiveCaption;
+            button1.Location = new Point(723, 434);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 23);
+            button1.TabIndex = 8;
+            button1.Text = "WYLOGUJ";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
             // klient
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(800, 457);
+            Controls.Add(button1);
             Controls.Add(balanceLabel);
             Controls.Add(reportButton);
             Controls.Add(tabControl1);
@@ -186,5 +199,6 @@
         private ListBox rentList;
         private ListBox returnList;
         private Label balanceLabel;
+        private Button button1;
     }
 }

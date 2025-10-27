@@ -216,5 +216,13 @@ namespace Bikeroo
             zgloszenia zgloszenia_sprawdz = new zgloszenia();
             zgloszenia_sprawdz.Show();
         }
+
+        private void logOut_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            main mainForm = new main();
+            mainForm.ShowDialog();
+            this.Close();
+        }
     }
 }
