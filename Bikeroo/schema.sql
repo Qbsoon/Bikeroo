@@ -7,10 +7,11 @@ CREATE TABLE stations (
 -- Tworzenie tabeli users
 CREATE TABLE users (
 	Id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-	username TEXT NOT NULL,
+	username TEXT NOT NULL UNIQUE,
 	password TEXT NOT NULL,
 	type INTEGER NOT NULL DEFAULT 2,
-	balance REAL NOT NULL DEFAULT 0
+	balance REAL NOT NULL DEFAULT 0,
+	points REAL NOT NULL DEFAULT 0
 );
 
 -- Tworzenie tabeli bikes
@@ -23,6 +24,18 @@ CREATE TABLE bikes (
 	FOREIGN KEY (station) REFERENCES stations(Id),
 	FOREIGN KEY (statusBorrowed) REFERENCES users(Id),
 	FOREIGN KEY (statusMaintenance) REFERENCES users(Id)
+);
+-- Tworzenie tabeli zgłoszeń
+CREATE TABLE reports (
+	Id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+	title TEXT NOT NULL,
+	body TEXT NOT NULL,
+	type INTEGER NOT NULL DEFAULT 0,
+	state INTEGER NOT NULL DEFAULT 0,
+	reportingUser INTEGER NOT NULL,
+	handlingUser INTEGER NOT NULL,
+	FOREIGN KEY (reportingUser) REFERENCES users(Id),
+	FOREIGN KEY (handlingUser) REFERENCES users(Id)
 );
 
 -- Wstawienie użytkowników
@@ -63,3 +76,8 @@ VALUES ('Q11', 3, 1),
 ('VHS700', 3, 2), 
 ('VHS500', 4, 2), 
 ('PRL100', 4, 2);
+
+-- Wstawienie zgłoszeń
+INSERT INTO reports (title, body, type, state, reportingUser, handlingUser)
+VALUES ('Awaria stacji','Stacja zepsuła się',1,0,2,0), 
+('Awaria systemu','Nie mogę się zalogować',1,0,0,4);
