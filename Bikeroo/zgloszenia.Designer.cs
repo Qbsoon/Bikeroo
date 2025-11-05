@@ -31,18 +31,19 @@
             submitButton = new Button();
             reportText = new RichTextBox();
             label1 = new Label();
-            checkBox1 = new CheckBox();
-            checkBox2 = new CheckBox();
+            system = new CheckBox();
+            bikesAndStations = new CheckBox();
             groupBox1 = new GroupBox();
+            label2 = new Label();
+            reportTitle = new TextBox();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // submitButton
             // 
-            submitButton.Location = new Point(506, 525);
-            submitButton.Margin = new Padding(4, 5, 4, 5);
+            submitButton.Location = new Point(354, 315);
             submitButton.Name = "submitButton";
-            submitButton.Size = new Size(180, 75);
+            submitButton.Size = new Size(126, 45);
             submitButton.TabIndex = 0;
             submitButton.Text = "zgłaszam";
             submitButton.UseVisualStyleBackColor = true;
@@ -50,10 +51,9 @@
             // 
             // reportText
             // 
-            reportText.Location = new Point(17, 97);
-            reportText.Margin = new Padding(4, 5, 4, 5);
+            reportText.Location = new Point(12, 58);
             reportText.Name = "reportText";
-            reportText.Size = new Size(461, 501);
+            reportText.Size = new Size(324, 302);
             reportText.TabIndex = 1;
             reportText.Text = "";
             // 
@@ -61,58 +61,70 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 12F);
-            label1.Location = new Point(13, 41);
-            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Location = new Point(9, 25);
             label1.Name = "label1";
-            label1.Size = new Size(721, 32);
+            label1.Size = new Size(464, 21);
             label1.TabIndex = 2;
             label1.Text = "Twoje zgłoszenie jest dla nas bardzo ważne, dziekujemy za pomoc";
             // 
-            // checkBox1
+            // system
             // 
-            checkBox1.AutoSize = true;
-            checkBox1.Location = new Point(9, 78);
-            checkBox1.Margin = new Padding(4, 5, 4, 5);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(105, 29);
-            checkBox1.TabIndex = 3;
-            checkBox1.Text = "Systemu";
-            checkBox1.UseVisualStyleBackColor = true;
+            system.AutoSize = true;
+            system.Location = new Point(6, 47);
+            system.Name = "system";
+            system.Size = new Size(71, 19);
+            system.TabIndex = 3;
+            system.Text = "Systemu";
+            system.UseVisualStyleBackColor = true;
             // 
-            // checkBox2
+            // bikesAndStations
             // 
-            checkBox2.AutoSize = true;
-            checkBox2.Location = new Point(9, 37);
-            checkBox2.Margin = new Padding(4, 5, 4, 5);
-            checkBox2.Name = "checkBox2";
-            checkBox2.Size = new Size(149, 29);
-            checkBox2.TabIndex = 4;
-            checkBox2.Text = "Rower / Stacja";
-            checkBox2.UseVisualStyleBackColor = true;
+            bikesAndStations.AutoSize = true;
+            bikesAndStations.Location = new Point(6, 22);
+            bikesAndStations.Name = "bikesAndStations";
+            bikesAndStations.Size = new Size(101, 19);
+            bikesAndStations.TabIndex = 4;
+            bikesAndStations.Text = "Rower / Stacja";
+            bikesAndStations.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(checkBox2);
-            groupBox1.Controls.Add(checkBox1);
-            groupBox1.Location = new Point(506, 387);
-            groupBox1.Margin = new Padding(4, 5, 4, 5);
+            groupBox1.Controls.Add(bikesAndStations);
+            groupBox1.Controls.Add(system);
+            groupBox1.Location = new Point(354, 232);
             groupBox1.Name = "groupBox1";
-            groupBox1.Padding = new Padding(4, 5, 4, 5);
-            groupBox1.Size = new Size(180, 128);
+            groupBox1.Size = new Size(126, 77);
             groupBox1.TabIndex = 5;
             groupBox1.TabStop = false;
             groupBox1.Text = "Zgłoszenie dotyczy";
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(372, 76);
+            label2.Name = "label2";
+            label2.Size = new Size(89, 15);
+            label2.TabIndex = 6;
+            label2.Text = "Tytuł zgłoszenia";
+            // 
+            // reportTitle
+            // 
+            reportTitle.Location = new Point(342, 94);
+            reportTitle.Name = "reportTitle";
+            reportTitle.Size = new Size(160, 23);
+            reportTitle.TabIndex = 7;
+            // 
             // zgloszenia
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(735, 620);
+            ClientSize = new Size(514, 372);
+            Controls.Add(reportTitle);
+            Controls.Add(label2);
             Controls.Add(groupBox1);
             Controls.Add(label1);
             Controls.Add(reportText);
             Controls.Add(submitButton);
-            Margin = new Padding(4, 5, 4, 5);
             Name = "zgloszenia";
             Text = "zgloszenia";
             groupBox1.ResumeLayout(false);
@@ -126,8 +138,10 @@
         private Button submitButton;
         private RichTextBox reportText;
         private Label label1;
-        private CheckBox checkBox1;
-        private CheckBox checkBox2;
+        private CheckBox system;
+        private CheckBox bikesAndStations;
         private GroupBox groupBox1;
+        private Label label2;
+        private TextBox reportTitle;
     }
 }

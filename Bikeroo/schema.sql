@@ -33,14 +33,14 @@ CREATE TABLE reports (
 	type INTEGER NOT NULL DEFAULT 0,
 	state INTEGER NOT NULL DEFAULT 0,
 	reportingUser INTEGER NOT NULL,
-	handlingUser INTEGER NOT NULL,
+	handlingUser INTEGER DEFAULT 1,
 	FOREIGN KEY (reportingUser) REFERENCES users(Id),
 	FOREIGN KEY (handlingUser) REFERENCES users(Id)
 );
 
 -- Wstawienie użytkowników
 INSERT INTO users (username, password, type, balance)
-VALUES ('test', 'test', 2, 0), 
+VALUES ('test', 'test', 2, 0), --użytkownik testowy wewnętrzny, jego Id jest gdy zgłasza się coś w main, oraz gdy nikt nie wziął na siebie zgłoszenia
 ('user', 'user', 2, 100),
 ('engineer', '123', 1, 0),
 ('admin', 'admin', 0, 0);
@@ -79,5 +79,5 @@ VALUES ('Q11', 3, 1),
 
 -- Wstawienie zgłoszeń
 INSERT INTO reports (title, body, type, state, reportingUser, handlingUser)
-VALUES ('Awaria stacji','Stacja zepsuła się',1,0,2,0), 
+VALUES ('Awaria stacji','Stacja zepsuła się',1,0,2,1), 
 ('Awaria systemu','Nie mogę się zalogować',1,0,0,4);

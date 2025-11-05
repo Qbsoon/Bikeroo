@@ -166,8 +166,11 @@ namespace Bikeroo
 
         private void reports_Click(object sender, EventArgs e)
         {
-            zgloszenia zgloszenia_pokaz = new zgloszenia();
-            zgloszenia_pokaz.Show();
+            zgloszenia zgloszenie = new zgloszenia();
+            zgloszenie.setUserId(userId);
+            zgloszenie.setConnectionString(connectionString);
+            zgloszenie.Show();
+            zgloszenie.Show();
         }
 
         private void addBike_Click(object sender, EventArgs e)
