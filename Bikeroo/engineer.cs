@@ -198,5 +198,13 @@ namespace Bikeroo
             mainForm.ShowDialog();
             this.Close();
         }
+
+        private void reportsList_Click(object sender, EventArgs e)
+        {
+            zgloszeniaWidok zgloszenie = new zgloszeniaWidok();
+            zgloszenie.setUserId(userId);
+            zgloszenie.setConnectionString(connectionString);
+            zgloszenie.Show();
+        }
     }
 }

@@ -43,6 +43,7 @@
             label2 = new Label();
             reports = new Button();
             logOut = new Button();
+            reportsList = new Button();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -189,11 +190,11 @@
             // 
             // reports
             // 
-            reports.Location = new Point(713, -2);
+            reports.Location = new Point(713, 2);
             reports.Name = "reports";
-            reports.Size = new Size(75, 23);
+            reports.Size = new Size(75, 28);
             reports.TabIndex = 8;
-            reports.Text = "zgłoszenia";
+            reports.Text = "zgłoś";
             reports.UseVisualStyleBackColor = true;
             reports.Click += reports_Click;
             // 
@@ -208,11 +209,22 @@
             logOut.UseVisualStyleBackColor = false;
             logOut.Click += logOut_Click;
             // 
+            // reportsList
+            // 
+            reportsList.Location = new Point(632, 2);
+            reportsList.Name = "reportsList";
+            reportsList.Size = new Size(75, 28);
+            reportsList.TabIndex = 10;
+            reportsList.Text = "lista zgłoszeń";
+            reportsList.UseVisualStyleBackColor = true;
+            reportsList.Click += reportsList_Click;
+            // 
             // engineer
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(reportsList);
             Controls.Add(logOut);
             Controls.Add(reports);
             Controls.Add(tabControl1);
@@ -243,5 +255,6 @@
         private ListBox repairList;
         private Button addBike;
         private Button logOut;
+        private Button reportsList;
     }
 }

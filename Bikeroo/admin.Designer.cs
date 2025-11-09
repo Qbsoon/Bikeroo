@@ -54,6 +54,7 @@
             addAccounts = new Button();
             reports = new Button();
             logOut = new Button();
+            reportsList = new Button();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)bikeTable).BeginInit();
@@ -295,7 +296,7 @@
             accountT_type.MinimumWidth = 8;
             accountT_type.Name = "accountT_type";
             accountT_type.ReadOnly = true;
-            accountT_type.Width = 50;
+            accountT_type.Width = 51;
             // 
             // accountT_balance
             // 
@@ -331,7 +332,7 @@
             reports.Name = "reports";
             reports.Size = new Size(75, 23);
             reports.TabIndex = 1;
-            reports.Text = "zgłoszenia";
+            reports.Text = "zgłoś";
             reports.UseVisualStyleBackColor = true;
             reports.Click += reports_Click;
             // 
@@ -346,11 +347,22 @@
             logOut.UseVisualStyleBackColor = false;
             logOut.Click += logOut_Click;
             // 
+            // reportsList
+            // 
+            reportsList.Location = new Point(612, 7);
+            reportsList.Name = "reportsList";
+            reportsList.Size = new Size(88, 23);
+            reportsList.TabIndex = 3;
+            reportsList.Text = "lista zgłoszeń";
+            reportsList.UseVisualStyleBackColor = true;
+            reportsList.Click += reportsList_Click;
+            // 
             // admin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(reportsList);
             Controls.Add(logOut);
             Controls.Add(reports);
             Controls.Add(tabControl1);
@@ -396,5 +408,6 @@
         private DataGridViewTextBoxColumn accountT_type;
         private DataGridViewTextBoxColumn accountT_balance;
         private Button logOut;
+        private Button reportsList;
     }
 }

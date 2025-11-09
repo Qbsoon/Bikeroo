@@ -217,7 +217,6 @@ namespace Bikeroo
             zgloszenie.setUserId(userId);
             zgloszenie.setConnectionString(connectionString);
             zgloszenie.Show();
-            zgloszenie.Show();
         }
 
         private void logOut_Click(object sender, EventArgs e)
@@ -226,6 +225,14 @@ namespace Bikeroo
             main mainForm = new main();
             mainForm.ShowDialog();
             this.Close();
+        }
+
+        private void reportsList_Click(object sender, EventArgs e)
+        {
+            zgloszeniaWidok zgloszenie = new zgloszeniaWidok();
+            zgloszenie.setUserId(userId);
+            zgloszenie.setConnectionString(connectionString);
+            zgloszenie.Show();
         }
     }
 }

@@ -29,15 +29,22 @@
         private void InitializeComponent()
         {
             confirm = new Button();
-            listView1 = new ListView();
             options = new GroupBox();
             radioButton2 = new RadioButton();
             radioButton1 = new RadioButton();
             label1 = new Label();
             takeButton = new Button();
-            richTextBox1 = new RichTextBox();
+            reportBodyShow = new RichTextBox();
             label2 = new Label();
+            reportList = new DataGridView();
+            reportId = new DataGridViewTextBoxColumn();
+            reportTitle = new DataGridViewTextBoxColumn();
+            reportType = new DataGridViewTextBoxColumn();
+            reportState = new DataGridViewTextBoxColumn();
+            reportUser = new DataGridViewTextBoxColumn();
+            reportHelper = new DataGridViewTextBoxColumn();
             options.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)reportList).BeginInit();
             SuspendLayout();
             // 
             // confirm
@@ -48,14 +55,7 @@
             confirm.TabIndex = 0;
             confirm.Text = "potwierdz";
             confirm.UseVisualStyleBackColor = true;
-            // 
-            // listView1
-            // 
-            listView1.Location = new Point(12, 34);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(517, 398);
-            listView1.TabIndex = 1;
-            listView1.UseCompatibleStateImageBehavior = false;
+            confirm.Click += confirm_Click;
             // 
             // options
             // 
@@ -93,7 +93,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(12, 16);
+            label1.Location = new Point(213, 34);
             label1.Name = "label1";
             label1.Size = new Size(79, 15);
             label1.TabIndex = 5;
@@ -108,39 +108,88 @@
             takeButton.Text = "przejmij";
             takeButton.UseVisualStyleBackColor = true;
             // 
-            // richTextBox1
+            // reportBodyShow
             // 
-            richTextBox1.Location = new Point(535, 75);
-            richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(253, 174);
-            richTextBox1.TabIndex = 7;
-            richTextBox1.Text = "";
+            reportBodyShow.Location = new Point(535, 75);
+            reportBodyShow.Name = "reportBodyShow";
+            reportBodyShow.Size = new Size(253, 174);
+            reportBodyShow.TabIndex = 7;
+            reportBodyShow.Text = "";
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Location = new Point(619, 34);
             label2.Name = "label2";
-            label2.Size = new Size(90, 15);
+            label2.Size = new Size(91, 15);
             label2.TabIndex = 8;
             label2.Text = "Treść zgłoszenia";
+            // 
+            // reportList
+            // 
+            reportList.AllowUserToAddRows = false;
+            reportList.AllowUserToDeleteRows = false;
+            reportList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            reportList.Columns.AddRange(new DataGridViewColumn[] { reportId, reportTitle, reportType, reportState, reportUser, reportHelper });
+            reportList.Location = new Point(12, 75);
+            reportList.Name = "reportList";
+            reportList.ReadOnly = true;
+            reportList.Size = new Size(517, 357);
+            reportList.TabIndex = 10;
+            // 
+            // reportId
+            // 
+            reportId.HeaderText = "Id";
+            reportId.Name = "reportId";
+            reportId.ReadOnly = true;
+            // 
+            // reportTitle
+            // 
+            reportTitle.HeaderText = "Nazwa zgłoszenia";
+            reportTitle.Name = "reportTitle";
+            reportTitle.ReadOnly = true;
+            // 
+            // reportType
+            // 
+            reportType.HeaderText = "Typ zgłoszenia";
+            reportType.Name = "reportType";
+            reportType.ReadOnly = true;
+            // 
+            // reportState
+            // 
+            reportState.HeaderText = "Status wykonania";
+            reportState.Name = "reportState";
+            reportState.ReadOnly = true;
+            // 
+            // reportUser
+            // 
+            reportUser.HeaderText = "Zgłaszający";
+            reportUser.Name = "reportUser";
+            reportUser.ReadOnly = true;
+            // 
+            // reportHelper
+            // 
+            reportHelper.HeaderText = "Obsługujący";
+            reportHelper.Name = "reportHelper";
+            reportHelper.ReadOnly = true;
             // 
             // zgloszeniaWidok
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(reportList);
             Controls.Add(label2);
-            Controls.Add(richTextBox1);
+            Controls.Add(reportBodyShow);
             Controls.Add(takeButton);
             Controls.Add(label1);
             Controls.Add(options);
-            Controls.Add(listView1);
             Controls.Add(confirm);
             Name = "zgloszeniaWidok";
             Text = "zgloszeniaWidok";
             options.ResumeLayout(false);
             options.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)reportList).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -148,13 +197,19 @@
         #endregion
 
         private Button confirm;
-        private ListView listView1;
         private GroupBox options;
         private RadioButton radioButton2;
         private RadioButton radioButton1;
         private Label label1;
         private Button takeButton;
-        private RichTextBox richTextBox1;
+        private RichTextBox reportBodyShow;
         private Label label2;
+        private DataGridView reportList;
+        private DataGridViewTextBoxColumn reportId;
+        private DataGridViewTextBoxColumn reportTitle;
+        private DataGridViewTextBoxColumn reportType;
+        private DataGridViewTextBoxColumn reportState;
+        private DataGridViewTextBoxColumn reportUser;
+        private DataGridViewTextBoxColumn reportHelper;
     }
 }
