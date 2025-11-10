@@ -16,6 +16,7 @@ namespace Bikeroo
     {
 
         private int userId;
+        private int userType;
         private string connectionString;
         public zgloszeniaWidok()
         {
@@ -28,7 +29,21 @@ namespace Bikeroo
         public void setConnectionString(string connnString)
         {
             connectionString = connnString;
+            userType=loadUserType();
             loadReports();
+        }
+        private int loadUserType()
+        {
+            using(var connection= new SqliteConnection(connectionString))
+            {
+                connection.Open();
+                string query = "SELECT type FROM users WHERE Id=@id";
+                SqliteCommand command=new SqliteCommand(query, connection);
+                command.Parameters.AddWithValue("id",userId);
+                object result=command.ExecuteScalar();
+                userType = Convert.ToInt32(result);
+                return userType;
+            }
         }
         private void loadReports()
         {
@@ -39,6 +54,10 @@ namespace Bikeroo
                 {
                     connection.Open();
                     string query = ("SELECT Id, title, type, state, reportingUser, handlingUser FROM reports");
+                    if (userType == 1)
+                    {
+                        query += " WHERE type IN (0,1)";
+                    }
                     SqliteCommand command = new SqliteCommand(query, connection);
                     SqliteDataReader reader = command.ExecuteReader();
                     while (reader.Read())
@@ -53,11 +72,11 @@ namespace Bikeroo
                         }
                         else if (reportType == 1)
                         {
-                            reportType_n = "System";
+                            reportType_n = "Rowery i stacje";
                         }
                         else if (reportType == 2)
                         {
-                            reportType_n = "Rowery i stacje";
+                            reportType_n = "System";
                         }
                         int reportState = reader.GetInt32(3);
                         string reportState_n = "";

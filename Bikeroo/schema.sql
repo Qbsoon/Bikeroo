@@ -80,4 +80,5 @@ VALUES ('Q11', 3, 1),
 -- Wstawienie zgłoszeń
 INSERT INTO reports (title, body, type, state, reportingUser, handlingUser)
 VALUES ('Awaria stacji','Stacja zepsuła się',1,0,2,1), 
-('Awaria systemu','Nie mogę się zalogować',1,0,0,4);
+('Awaria systemu','Nie mogę się zalogować',2,0,0,4),
+('Stacja nie widzi roweru','Stacja nie pokazuje roweru',0,0,0,4);
