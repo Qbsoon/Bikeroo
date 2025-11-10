@@ -30,8 +30,8 @@
         {
             confirm = new Button();
             options = new GroupBox();
-            radioButton2 = new RadioButton();
-            radioButton1 = new RadioButton();
+            finishReport = new RadioButton();
+            deleteReport = new RadioButton();
             label1 = new Label();
             takeButton = new Button();
             reportBodyShow = new RichTextBox();
@@ -59,8 +59,8 @@
             // 
             // options
             // 
-            options.Controls.Add(radioButton2);
-            options.Controls.Add(radioButton1);
+            options.Controls.Add(finishReport);
+            options.Controls.Add(deleteReport);
             options.Location = new Point(594, 302);
             options.Name = "options";
             options.Size = new Size(131, 75);
@@ -68,27 +68,27 @@
             options.TabStop = false;
             options.Text = "Opcje";
             // 
-            // radioButton2
+            // finishReport
             // 
-            radioButton2.AutoSize = true;
-            radioButton2.Location = new Point(6, 47);
-            radioButton2.Name = "radioButton2";
-            radioButton2.Size = new Size(81, 19);
-            radioButton2.TabIndex = 1;
-            radioButton2.TabStop = true;
-            radioButton2.Text = "Wykonane";
-            radioButton2.UseVisualStyleBackColor = true;
+            finishReport.AutoSize = true;
+            finishReport.Location = new Point(6, 47);
+            finishReport.Name = "finishReport";
+            finishReport.Size = new Size(81, 19);
+            finishReport.TabIndex = 1;
+            finishReport.TabStop = true;
+            finishReport.Text = "Wykonane";
+            finishReport.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // deleteReport
             // 
-            radioButton1.AutoSize = true;
-            radioButton1.Location = new Point(6, 22);
-            radioButton1.Name = "radioButton1";
-            radioButton1.Size = new Size(109, 19);
-            radioButton1.TabIndex = 0;
-            radioButton1.TabStop = true;
-            radioButton1.Text = "Usuń zgłoszenie";
-            radioButton1.UseVisualStyleBackColor = true;
+            deleteReport.AutoSize = true;
+            deleteReport.Location = new Point(6, 22);
+            deleteReport.Name = "deleteReport";
+            deleteReport.Size = new Size(109, 19);
+            deleteReport.TabIndex = 0;
+            deleteReport.TabStop = true;
+            deleteReport.Text = "Usuń zgłoszenie";
+            deleteReport.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -107,6 +107,7 @@
             takeButton.TabIndex = 6;
             takeButton.Text = "przejmij";
             takeButton.UseVisualStyleBackColor = true;
+            takeButton.Click += takeButton_Click;
             // 
             // reportBodyShow
             // 
@@ -136,6 +137,7 @@
             reportList.ReadOnly = true;
             reportList.Size = new Size(517, 357);
             reportList.TabIndex = 10;
+            reportList.SelectionChanged += reportListSelectionChanged;
             // 
             // reportId
             // 
@@ -198,8 +200,8 @@
 
         private Button confirm;
         private GroupBox options;
-        private RadioButton radioButton2;
-        private RadioButton radioButton1;
+        private RadioButton finishReport;
+        private RadioButton deleteReport;
         private Label label1;
         private Button takeButton;
         private RichTextBox reportBodyShow;

@@ -129,7 +129,7 @@ namespace Bikeroo
                 return;
             }
             int id = Convert.ToInt32(tableObj.SelectedRows[0].Cells[0].Value);
-            if (userId == id)
+            if (userId == id && table=="users")
             {
                 MessageBox.Show("Nie możesz usunąć samego siebie");
                 return;

@@ -73,8 +73,8 @@ namespace Bikeroo
                         {
                             reportState_n = "Wykonano";
                         }
-                        int reportUser=reader.GetInt32(4);
-                        int reportHelper=reader.GetInt32(5);
+                        int reportUser = reader.GetInt32(4);
+                        int reportHelper = reader.GetInt32(5);
                         reportList.Rows.Add(reportId, reportTitle, reportType_n, reportState_n, reportUser, reportHelper);
                     }
                 }
@@ -83,7 +83,122 @@ namespace Bikeroo
 
         private void confirm_Click(object sender, EventArgs e)
         {
+            if (deleteReport.Checked)
+            {
+                deleteSelected("reports", reportList, loadReports);
+            }
+            else if (finishReport.Checked)
+            {
+                finishTask("reports", reportList, loadReports);
+            }
+            else
+            {
+                MessageBox.Show("Nie wybrano żadnej z opcji");
+            }
+        }
+        private void deleteSelected(string table, DataGridView tableObj, Action reloadMethod)
+        {
+            if (tableObj.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Wybierz zgłoszenie do usunięcia");
+                return;
+            }
+            var result = new usun().ShowDialog();
+            if (result != DialogResult.OK)
+            {
+                return;
+            }
+            int id = Convert.ToInt32(tableObj.SelectedRows[0].Cells[0].Value);
+            using (var connection = new SqliteConnection(connectionString))
+            {
+                connection.Open();
+                string query = $"DELETE FROM {table} WHERE Id=@id";
+                SqliteCommand command = new SqliteCommand(query, connection);
+                command.Parameters.AddWithValue("@id", id);
+                command.ExecuteNonQuery();
+            }
+            reloadMethod();
+        }
+        private void finishTask(string table, DataGridView tableObj, Action reloadMethod)
+        {
+            if (tableObj.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Wybierz zgłoszenie do zamknięcia");
+                return;
+            }
+            var result = new usun().ShowDialog();
+            if (result != DialogResult.OK)
+            {
+                return;
+            }
+            int id = Convert.ToInt32(tableObj.SelectedRows[0].Cells[0].Value);
+            int reportState = 2;
+            using (var connection = new SqliteConnection(connectionString))
+            {
+                connection.Open();
+                string query = $"UPDATE {table} SET state=@reportState WHERE Id=@id";
+                SqliteCommand command = new SqliteCommand(query, connection);
+                command.Parameters.AddWithValue("@reportState", reportState);
+                command.Parameters.AddWithValue("@id", id);
+                command.ExecuteNonQuery();
+            }
+            reloadMethod();
+        }
 
+        private void takeButton_Click(object sender, EventArgs e)
+        {
+            reportTake("reports", reportList, loadReports, userId);
+        }
+        private void reportTake(string table, DataGridView tableObj, Action reloadMethod, int userId)
+        {
+            if (tableObj.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Wybierz zgłoszenie do przejęcia");
+                return;
+            }
+            var result = new usun().ShowDialog();
+            if (result != DialogResult.OK)
+            {
+                return;
+            }
+            int id = Convert.ToInt32(tableObj.SelectedRows[0].Cells[0].Value);
+            int reportState = 1;
+            using (var connection = new SqliteConnection(connectionString))
+            {
+                connection.Open();
+                string query = $"UPDATE {table} SET state=@reportState, handlingUser=@userId WHERE Id=@id";
+                SqliteCommand command = new SqliteCommand(query, connection);
+                command.Parameters.AddWithValue("@reportState", reportState);
+                command.Parameters.AddWithValue("@userId", userId);
+                command.Parameters.AddWithValue("@id", id);
+                command.ExecuteNonQuery();
+            }
+            reloadMethod();
+        }
+        private void reportListSelectionChanged(object sender, EventArgs e)
+        {
+            if (reportList.SelectedRows.Count == 0)
+            {
+                reportBodyShow.Text = "";
+                return;
+            }
+            int id = Convert.ToInt32(reportList.SelectedRows[0].Cells[0].Value);
+            using (var connection=new SqliteConnection(connectionString))
+            {
+                connection.Open();
+                string query = "SELECT body FROM reports WHERE Id=@id";
+                SqliteCommand command= new SqliteCommand(query, connection);
+                command.Parameters.AddWithValue("@id", id);
+                object results=command.ExecuteScalar();
+                if (results != null)
+                {
+                    reportBodyShow.Text = results.ToString();
+                }
+                else
+                {
+                    reportBodyShow.Text = "Brak treści zgłoszenia";
+                }
+            }
         }
     }
 }
