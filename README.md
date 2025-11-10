@@ -17,11 +17,11 @@
   - [x] Zwróć:
     - [x] Wyświetlanie listy wypożyczonych rowerów
     - [x] Umożliwanie zwracania
-  - [ ] Opcja Wyloguj
+  - [x] Opcja Wyloguj
 - [ ] Inżynier:
   - [ ] Ekran zgłoszeń (zgłoszenia dotyczące rowerów/stacji):
-    - [ ] Usuwanie zgłoszeń
-    - [ ] Odznaczanie zgłoszeń
+    - [x] Usuwanie zgłoszeń
+    - [x] Odznaczanie zgłoszeń
   - [x] Przenoszenie roweru z stacji do naprawy:
     - [x] Przenoszenie roweru
   - [ ] Przenosze z naprawy
@@ -31,11 +31,11 @@
   - [ ] Przenoszenie rowerów między stacjami:
     - [ ] Wyświetlanie listy rowerów obecnych na stacjach
     - [x] Umożliwienie przenoszenia rowerów między stacjami
-  - [ ] Opcja Wyloguj
-- [ ] Admin:
-  - [ ] Ekran zgłoszeń (wszystkie zgłoszenia):
-    - [ ] Usuwanie zgłoszeń
-    - [ ] Odznaczanie zgłoszeń
+  - [x] Opcja Wyloguj
+- [x] Admin:
+  - [x] Ekran zgłoszeń (wszystkie zgłoszenia):
+    - [x] Usuwanie zgłoszeń
+    - [x] Odznaczanie zgłoszeń
   - [x] Rowery:
     - [x] Umożliwienie usuwania rowerów za pomocą okna
     - [x] Umożliwienie dodawania rowerów za pomocą okna
@@ -45,4 +45,4 @@
   - [x] Konta:
     - [x] Umożliwienie usuwania kont za pomocą okna (zawsze musi być przynajmniej jeden Admin)
     - [x] Umożliwienie dodawania kont za pomocą okna
-  - [ ] Opcja Wyloguj
+  - [x] Opcja Wyloguj
