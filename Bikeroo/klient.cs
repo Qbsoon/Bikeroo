@@ -15,13 +15,62 @@ namespace Bikeroo
     {
         private int userId;
         private string connectionString;
+        private Size originalSize;
+        private Dictionary<Control, Rectangle> originalControlBounds = new Dictionary<Control, Rectangle>();
         public klient()
         {
             InitializeComponent();
             reloadBalance();
             reloadRentList();
             reloadReturnList();
+            this.Load += clientLoad;
+            this.Resize += clientResize;
         }
+        private void clientLoad(object sender, EventArgs e)
+        {
+            originalSize = this.Size;
+            StoreOriginalBoundsRecursive(this);
+        }
+        private void clientResize(object sender, EventArgs E)
+        {
+            ResizeControlsRecursive(this);
+        }
+        private void StoreOriginalBoundsRecursive(Control parent)
+        {
+            foreach (Control ctrl in parent.Controls)
+            {
+                if (!originalControlBounds.ContainsKey(ctrl))
+                    originalControlBounds[ctrl] = ctrl.Bounds;
+
+                if (ctrl.Controls.Count > 0)
+                    StoreOriginalBoundsRecursive(ctrl);
+            }
+        }
+        private void ResizeControlsRecursive(Control parent)
+        {
+            if (originalSize.Width == 0 || originalSize.Height == 0) return;
+
+            float xRatio = (float)this.Width / originalSize.Width;
+            float yRatio = (float)this.Height / originalSize.Height;
+
+            foreach (Control ctrl in parent.Controls)
+            {
+                if (originalControlBounds.ContainsKey(ctrl))
+                {
+                    Rectangle orig = originalControlBounds[ctrl];
+                    int newX = (int)(orig.X * xRatio);
+                    int newY = (int)(orig.Y * yRatio);
+                    int newWidth = (int)(orig.Width * xRatio);
+                    int newHeight = (int)(orig.Height * yRatio);
+                    ctrl.Bounds = new Rectangle(newX, newY, newWidth, newHeight);
+                }
+                if (ctrl.Controls.Count > 0)
+                {
+                    ResizeControlsRecursive(ctrl);
+                }
+            }
+        }
+
 
         public void setUserId(int id)
         {
