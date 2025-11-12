@@ -19,7 +19,7 @@
     - [x] Umożliwanie zwracania
   - [x] Opcja Wyloguj
 - [ ] Inżynier:
-  - [ ] Ekran zgłoszeń (zgłoszenia dotyczące rowerów/stacji):
+  - [x] Ekran zgłoszeń (zgłoszenia dotyczące rowerów/stacji):
     - [x] Usuwanie zgłoszeń
     - [x] Odznaczanie zgłoszeń
   - [x] Przenoszenie roweru z stacji do naprawy:
