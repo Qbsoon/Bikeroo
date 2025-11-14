@@ -35,8 +35,8 @@
             tabPage1 = new TabPage();
             rentList = new ListBox();
             tabPage2 = new TabPage();
+            stationToReturn = new ComboBox();
             returnList = new ListBox();
-            stationInput = new TextBox();
             label1 = new Label();
             balanceLabel = new Label();
             button1 = new Button();
@@ -108,8 +108,8 @@
             // 
             // tabPage2
             // 
+            tabPage2.Controls.Add(stationToReturn);
             tabPage2.Controls.Add(returnList);
-            tabPage2.Controls.Add(stationInput);
             tabPage2.Controls.Add(label1);
             tabPage2.Controls.Add(returnBtn);
             tabPage2.Location = new Point(4, 24);
@@ -120,6 +120,15 @@
             tabPage2.Text = "Zwróć";
             tabPage2.UseVisualStyleBackColor = true;
             // 
+            // stationToReturn
+            // 
+            stationToReturn.AllowDrop = true;
+            stationToReturn.FormattingEnabled = true;
+            stationToReturn.Location = new Point(393, 351);
+            stationToReturn.Name = "stationToReturn";
+            stationToReturn.Size = new Size(196, 23);
+            stationToReturn.TabIndex = 10;
+            // 
             // returnList
             // 
             returnList.FormattingEnabled = true;
@@ -128,13 +137,6 @@
             returnList.Name = "returnList";
             returnList.Size = new Size(769, 319);
             returnList.TabIndex = 9;
-            // 
-            // stationInput
-            // 
-            stationInput.Location = new Point(405, 348);
-            stationInput.Name = "stationInput";
-            stationInput.Size = new Size(184, 23);
-            stationInput.TabIndex = 8;
             // 
             // label1
             // 
@@ -195,10 +197,10 @@
         private TabPage tabPage1;
         private TabPage tabPage2;
         private Label label1;
-        private TextBox stationInput;
         private ListBox rentList;
         private ListBox returnList;
         private Label balanceLabel;
         private Button button1;
+        private ComboBox stationToReturn;
     }
 }
