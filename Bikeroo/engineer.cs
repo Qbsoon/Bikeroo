@@ -86,16 +86,17 @@ namespace Bikeroo
         {
             if (connectionString != null && userId > 0)
             {
-                bikeList.Items.Clear();
+                bikeList.Rows.Clear();
                 using (var connection = new SqliteConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "SELECT Id FROM bikes WHERE (statusBorrowed IS NULL or statusBorrowed = '') AND (statusMaintenance IS NULL or statusMaintenance = '')";
+                    string query = @"SELECT b.Id,b.model,s.name AS stationName, b.statusBorrowed FROM bikes b JOIN stations s ON b.station=s.Id WHERE (statusBorrowed IS NULL or statusBorrowed = '') AND (statusMaintenance IS NULL or statusMaintenance = '')";
                     SqliteCommand command = new SqliteCommand(query, connection);
                     SqliteDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        bikeList.Items.Add(reader.GetInt32(0).ToString());
+                        string status = reader.IsDBNull(3) ? "Nie" : "Tak";
+                        bikeList.Rows.Add(reader.GetInt32(0).ToString(), reader.GetString(1), reader.GetString(2), status);
                     }
 
                 }
@@ -105,17 +106,17 @@ namespace Bikeroo
         {
             if (connectionString != null && userId > 0)
             {
-                repairList.Items.Clear();
+                repairList.Rows.Clear();
                 using (var connection = new SqliteConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "SELECT Id FROM bikes WHERE statusMaintenance=@userId";
+                    string query = "SELECT Id, Model FROM bikes WHERE statusMaintenance=@userId";
                     SqliteCommand command = new SqliteCommand(query, connection);
                     command.Parameters.AddWithValue("@userId", userId);
                     SqliteDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        repairList.Items.Add(reader.GetInt32(0).ToString());
+                        repairList.Rows.Add(reader.GetInt32(0).ToString(), reader.GetString(1));
                     }
                 }
             }
@@ -129,7 +130,7 @@ namespace Bikeroo
         {
             if (connectionString != null && userId > 0)
             {
-                var selected = bikeList.SelectedItems.Count > 0 ? bikeList.SelectedItem as string : null;
+                var selected = bikeList.SelectedRows.Count > 0 ? bikeList.SelectedRows[0].Cells[0].Value as string : null;
                 if (selected != null)
                 {
                     using (var connection = new SqliteConnection(connectionString))
@@ -155,7 +156,7 @@ namespace Bikeroo
         {
             if (connectionString != null && userId > 0)
             {
-                var selected = repairList.SelectedItems.Count > 0 ? repairList.SelectedItem as string : null;
+                var selected = repairList.SelectedRows.Count > 0 ? repairList.SelectedRows[0].Cells[0].Value as string : null;
                 if (selected == null)
                 {
                     MessageBox.Show("Wybierz rower z listy napraw");

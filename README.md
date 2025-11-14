@@ -24,12 +24,12 @@
     - [x] Odznaczanie zgłoszeń
   - [x] Przenoszenie roweru z stacji do naprawy:
     - [x] Przenoszenie roweru
-  - [ ] Przenosze z naprawy
-    - [ ] Wyświetlanie listy rowerów obecnie w naprawie
+  - [x] Przenosze z naprawy
+    - [x] Wyświetlanie listy rowerów obecnie w naprawie
     - [x] Usuwanie rowerów
     - [x] Przenoszenie rowerów na stację
-  - [ ] Przenoszenie rowerów między stacjami:
-    - [ ] Wyświetlanie listy rowerów obecnych na stacjach
+  - [x] Przenoszenie rowerów między stacjami:
+    - [x] Wyświetlanie listy rowerów obecnych na stacjach
     - [x] Umożliwienie przenoszenia rowerów między stacjami
   - [x] Opcja Wyloguj
 - [x] Admin:
