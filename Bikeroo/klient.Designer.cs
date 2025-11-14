@@ -40,6 +40,9 @@
             label1 = new Label();
             balanceLabel = new Label();
             button1 = new Button();
+            addMoney = new Button();
+            gambleButton = new Button();
+            pointsLable = new Label();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -151,7 +154,7 @@
             // balanceLabel
             // 
             balanceLabel.AutoSize = true;
-            balanceLabel.Location = new Point(529, 12);
+            balanceLabel.Location = new Point(376, 9);
             balanceLabel.Name = "balanceLabel";
             balanceLabel.Size = new Size(39, 15);
             balanceLabel.TabIndex = 7;
@@ -168,11 +171,43 @@
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
+            // addMoney
+            // 
+            addMoney.Location = new Point(295, 0);
+            addMoney.Name = "addMoney";
+            addMoney.Size = new Size(75, 33);
+            addMoney.TabIndex = 9;
+            addMoney.Text = "Zasil konto";
+            addMoney.UseVisualStyleBackColor = true;
+            addMoney.Click += addMoney_Click;
+            // 
+            // gambleButton
+            // 
+            gambleButton.Location = new Point(475, 0);
+            gambleButton.Name = "gambleButton";
+            gambleButton.Size = new Size(75, 33);
+            gambleButton.TabIndex = 10;
+            gambleButton.Text = "Losuj";
+            gambleButton.UseVisualStyleBackColor = true;
+            gambleButton.Click += gambleButton_Click;
+            // 
+            // pointsLable
+            // 
+            pointsLable.AutoSize = true;
+            pointsLable.Location = new Point(556, 9);
+            pointsLable.Name = "pointsLable";
+            pointsLable.Size = new Size(50, 15);
+            pointsLable.TabIndex = 11;
+            pointsLable.Text = "Punkty: ";
+            // 
             // klient
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 457);
+            Controls.Add(pointsLable);
+            Controls.Add(gambleButton);
+            Controls.Add(addMoney);
             Controls.Add(button1);
             Controls.Add(balanceLabel);
             Controls.Add(reportButton);
@@ -202,5 +237,8 @@
         private Label balanceLabel;
         private Button button1;
         private ComboBox stationToReturn;
+        private Button addMoney;
+        private Button gambleButton;
+        private Label pointsLable;
     }
 }

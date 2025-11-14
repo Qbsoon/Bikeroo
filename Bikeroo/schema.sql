@@ -1,4 +1,4 @@
-﻿-- Tworzenie tabeli stations
+-- Tworzenie tabeli stations
 CREATE TABLE stations (
 	Id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
 	name TEXT NOT NULL
@@ -11,7 +11,8 @@ CREATE TABLE users (
 	password TEXT NOT NULL,
 	type INTEGER NOT NULL DEFAULT 2,
 	balance REAL NOT NULL DEFAULT 0,
-	points REAL NOT NULL DEFAULT 0
+	points REAL NOT NULL DEFAULT 0,
+	winner REAL NOT NULL DEFAULT 0
 );
 
 -- Tworzenie tabeli bikes
@@ -20,6 +21,7 @@ CREATE TABLE bikes (
 	model TEXT NOT NULL,
 	station INTEGER NOT NULL,
 	statusBorrowed INTEGER,
+	timeOfRent DATETIME DEFAULT NULL,
 	statusMaintenance INTEGER,
 	FOREIGN KEY (station) REFERENCES stations(Id),
 	FOREIGN KEY (statusBorrowed) REFERENCES users(Id),
@@ -71,14 +73,14 @@ VALUES ('Q11', 3, 3),
 ('MS365', 4, 2);
 
 -- Wstawienie wypożyczonych rowerów
-INSERT INTO bikes (model, station, statusBorrowed)
-VALUES ('Q11', 3, 1), 
-('VHS700', 3, 2), 
-('VHS500', 4, 2), 
-('PRL100', 4, 2);
+INSERT INTO bikes (model, station, statusBorrowed, timeOfRent)
+VALUES ('Q11', 3, 1,CURRENT_TIMESTAMP), 
+('VHS700', 3, 2,CURRENT_TIMESTAMP), 
+('VHS500', 4, 2,CURRENT_TIMESTAMP), 
+('PRL100', 4, 2,CURRENT_TIMESTAMP);
 
 -- Wstawienie zgłoszeń
 INSERT INTO reports (title, body, type, state, reportingUser, handlingUser)
-VALUES ('Awaria stacji','Stacja zepsuła się',1,0,2,1), 
+VALUES ('Awaria stacji','Stacja zepsuła się',1,0,2,1),
 ('Awaria systemu','Nie mogę się zalogować',2,0,0,4),
 ('Stacja nie widzi roweru','Stacja nie pokazuje roweru',0,0,0,4);

@@ -122,7 +122,7 @@ namespace Bikeroo
                         var bike = new
                         {
                             Id = reader["BikeId"],
-                            Display=$"ID: {reader["BikeId"]}, Model: {reader["Model"]}, Stacja: {reader["StationName"]}"
+                            Display = $"ID: {reader["BikeId"]}, Model: {reader["Model"]}, Stacja: {reader["StationName"]}"
                         };
                         rentList.Items.Add(bike);
                     }
@@ -193,7 +193,7 @@ namespace Bikeroo
                     }
                     else
                     {
-                        balacneOriginal= reader.GetDouble(0);
+                        balacneOriginal = reader.GetDouble(0);
                     }
                 }
             }
@@ -236,7 +236,7 @@ namespace Bikeroo
                 MessageBox.Show("Proszę podać stację, do której zwracasz rower.");
                 return;
             }
-            
+
             string stationName = selectedStation.ToString();
             int stationId = 0;
             using (var connection = new SqliteConnection(connectionString))
@@ -255,12 +255,39 @@ namespace Bikeroo
                     MessageBox.Show("Nie znaleziono podanej stacji.");
                     return;
                 }
+                double cost = 0;
+                query = "SELECT timeOfRent FROM bikes WHERE Id=@bikeId";
+                SqliteCommand timeCommand = new SqliteCommand(query, connection);
+                timeCommand.Parameters.AddWithValue("@bikeId", selected);
+                var rentTimeObj = timeCommand.ExecuteScalar();
+                if (rentTimeObj != DBNull.Value && rentTimeObj != null)
+                {
+                    DateTime timeOfRent = DateTime.Parse(rentTimeObj.ToString());
+                    DateTime now = DateTime.Now;
+                    TimeSpan rentalDuration = now - timeOfRent;
+                    double hours = rentalDuration.TotalHours;
+                    cost = 5 * hours;
+
+                    query = "UPDATE users SET balance = balance - @cost WHERE Id = @userId";
+                    SqliteCommand costCommand = new SqliteCommand(query, connection);
+                    costCommand.Parameters.AddWithValue("@cost", cost);
+                    costCommand.Parameters.AddWithValue("@userId", userId);
+                    costCommand.ExecuteNonQuery();
+
+                    query = "UPDATE users SET points = points + FLOOR(@cost) WHERE Id = @userId";
+                    SqliteCommand pointsCommand = new SqliteCommand(query, connection);
+                    pointsCommand.Parameters.AddWithValue("@cost", cost);
+                    pointsCommand.Parameters.AddWithValue("@userId", userId);
+                    pointsCommand.ExecuteNonQuery();
+                }
+
                 query = "UPDATE bikes SET statusBorrowed=NULL, station=@stationId WHERE Id=@bikeId";
                 SqliteCommand updateCommand = new SqliteCommand(query, connection);
                 updateCommand.Parameters.AddWithValue("@bikeId", selected);
                 updateCommand.Parameters.AddWithValue("@stationId", stationId);
                 updateCommand.ExecuteNonQuery();
             }
+            reloadBalance();
             reloadRentList();
             reloadReturnList();
         }
@@ -279,6 +306,56 @@ namespace Bikeroo
             main mainForm = new main();
             mainForm.ShowDialog();
             this.Close();
+        }
+
+        private void addMoney_Click(object sender, EventArgs e)
+        {
+            klientZasilenie addMoney = new klientZasilenie();
+            if (addMoney.ShowDialog() == DialogResult.OK)
+            {
+                decimal amountToAdd = addMoney.amountToAdd;
+                using (var connection = new SqliteConnection(connectionString))
+                {
+                    connection.Open();
+                    string query = "UPDATE users SET balance = balance + @amount WHERE Id = @userId";
+                    SqliteCommand command = new SqliteCommand(query, connection);
+                    command.Parameters.AddWithValue("@amount", amountToAdd);
+                    command.Parameters.AddWithValue("@userId", userId);
+                    command.ExecuteNonQuery();
+                }
+                reloadBalance();
+            }
+        }
+
+        private void gambleButton_Click(object sender, EventArgs e)
+        {
+            losowanie gamble= new losowanie(userId); //testowałem jak działa takie przekazywanie danych
+            gamble.setConnectionString(connectionString);
+            using (var connection = new SqliteConnection(connectionString))
+            {
+                connection.Open();
+                string query = "SELECT point FROM users WHERE Id=@bikeId";
+                SqliteCommand command = new SqliteCommand(query, connection);
+                command.Parameters.AddWithValue("@userId", userId);
+                SqliteDataReader reader = command.ExecuteReader();
+                if (reader.Read())
+                {
+                    double points=reader.GetDouble(0);
+                    if (points >= 100)
+                    {
+                        query = "UPDATE users SET point = point - 100 WHERE Id = @userId";
+                        SqliteCommand updateCommand = new SqliteCommand(query, connection);
+                        updateCommand.Parameters.AddWithValue("@userId", userId);
+                        updateCommand.ExecuteNonQuery();
+                        gamble.ShowDialog();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Nie masz wystarczającej ilości punktów aby wziąć udział w losowaniu. Minimalna ilość punktów to 100.");
+                        return;
+                    }
+                }
+            }
         }
     }
 }

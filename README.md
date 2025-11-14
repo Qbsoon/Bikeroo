@@ -1,19 +1,19 @@
 # Bikeroo
-- [ ] Database:
-  - [ ] Tabela zgłoszeń
-  - [ ] Tabela wypożyczeń
+- [x] Database:
+  - [x] Tabela zgłoszeń
+  - [x] Tabela wypożyczeń
 - [ ] Main:
   - [x] Logowanie
   - [x] Tworzenie nowego konta
   - [ ] (Opcjonalne) Dodanie e-mail
-- [ ] Klient:
-  - [ ] Wypożycz:
+- [x] Klient:
+  - [x] Wypożycz:
     - [x] Wyświetlanie listy możliwych do wypożyczenia rowerów
     - [x] Umożliwienie wypożyczania
     - [x] Dodanie okna do zgłaszania awarii
     - [x] Dodanie napisu z saldem konta
-    - [ ] Ustalenie i implementacja ceny wypożyczenia
-    - [ ] (Opcjonalnie) Punkty lojalnościowe i jakieś mini gierki
+    - [x] Ustalenie i implementacja ceny wypożyczenia
+    - [x] (Opcjonalnie) Punkty lojalnościowe i jakieś mini gierki
   - [x] Zwróć:
     - [x] Wyświetlanie listy wypożyczonych rowerów
     - [x] Umożliwanie zwracania
