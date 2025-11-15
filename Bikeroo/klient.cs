@@ -110,7 +110,7 @@ namespace Bikeroo
         {
             if (connectionString != null && userId > 0)
             {
-                rentList.Items.Clear();
+                rentList.Rows.Clear();
                 using (var connection = new SqliteConnection(connectionString))
                 {
                     connection.Open();
@@ -119,14 +119,8 @@ namespace Bikeroo
                     SqliteDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        var bike = new
-                        {
-                            Id = reader["BikeId"],
-                            Display = $"ID: {reader["BikeId"]}, Model: {reader["Model"]}, Stacja: {reader["StationName"]}"
-                        };
-                        rentList.Items.Add(bike);
+                        rentList.Rows.Add(reader.GetInt32(0).ToString(), reader.GetString(1), reader.GetString(2));
                     }
-                    rentList.DisplayMember = "Display";
                 }
             }
         }
@@ -135,16 +129,17 @@ namespace Bikeroo
         {
             if (connectionString != null && userId > 0)
             {
-                returnList.Items.Clear();
+                returnList.Rows.Clear();
                 using (var connection = new SqliteConnection(connectionString))
                 {
                     connection.Open();
-                    string query = $"SELECT Id FROM bikes WHERE statusBorrowed = {userId}";
+                    string query = @"SELECT Id, model, timeOfRent FROM bikes WHERE statusBorrowed=@userId";
                     SqliteCommand command = new SqliteCommand(query, connection);
+                    command.Parameters.AddWithValue("@userId", userId);
                     SqliteDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        returnList.Items.Add(reader.GetInt32(0).ToString());
+                        returnList.Rows.Add(reader.GetInt32(0).ToString(), reader.GetString(1), reader.GetDateTime(2));
                     }
                 }
             }
@@ -197,17 +192,17 @@ namespace Bikeroo
                     }
                 }
             }
-            var selected = rentList.SelectedItem;
+            var selected = rentList.SelectedRows[0].Cells[0].Value as string;
             if (selected != null && connectionString != null && userId > 0)
             {
-                var bikeId = selected.GetType().GetProperty("Id").GetValue(selected);
                 using (var connection = new SqliteConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "UPDATE bikes SET statusBorrowed=@userId WHERE Id=@bikeId";
+                    string query = "UPDATE bikes SET statusBorrowed=@userId, timeOfRent=@date WHERE Id=@bikeId";
                     SqliteCommand command = new SqliteCommand(query, connection);
                     command.Parameters.AddWithValue("@userId", userId);
-                    command.Parameters.AddWithValue("@bikeId", bikeId);
+                    command.Parameters.AddWithValue("@date", DateTime.UtcNow);
+                    command.Parameters.AddWithValue("@bikeId", selected);
                     command.ExecuteNonQuery();
 
                     query = "UPDATE users SET balance=@balance WHERE Id=@userId";
@@ -224,7 +219,7 @@ namespace Bikeroo
 
         private void returnBtn_Click(object sender, EventArgs e)
         {
-            var selected = returnList.SelectedItem as string;
+            var selected = returnList.SelectedRows[0].Cells[0].Value as string;
             if (selected == null)
             {
                 MessageBox.Show("Proszę wybrać rower do zwrócenia.");
@@ -329,7 +324,7 @@ namespace Bikeroo
 
         private void gambleButton_Click(object sender, EventArgs e)
         {
-            losowanie gamble= new losowanie(userId); //testowałem jak działa takie przekazywanie danych
+            losowanie gamble = new losowanie(userId); //testowałem jak działa takie przekazywanie danych
             gamble.setConnectionString(connectionString);
             using (var connection = new SqliteConnection(connectionString))
             {
@@ -340,7 +335,7 @@ namespace Bikeroo
                 SqliteDataReader reader = command.ExecuteReader();
                 if (reader.Read())
                 {
-                    double points=reader.GetDouble(0);
+                    double points = reader.GetDouble(0);
                     if (points >= 100)
                     {
                         query = "UPDATE users SET point = point - 100 WHERE Id = @userId";
