@@ -156,15 +156,23 @@ namespace Bikeroo
                 }
             }
             */
-            using (var connection = new SqliteConnection(connectionString))
+            try
             {
-                connection.Open();
-                string query = $"DELETE FROM {table} WHERE Id=@id";
-                SqliteCommand command = new SqliteCommand(query, connection);
-                command.Parameters.AddWithValue("@id", id);
-                command.ExecuteNonQuery();
+                using (var connection = new SqliteConnection(connectionString))
+                {
+                    connection.Open();
+                    string query = $"DELETE FROM {table} WHERE Id=@id";
+                    SqliteCommand command = new SqliteCommand(query, connection);
+                    command.Parameters.AddWithValue("@id", id);
+                    command.ExecuteNonQuery();
+                }
+                reloadMethod();
             }
-            reloadMethod();
+            catch (Exception)
+            {
+                MessageBox.Show("Nie można usunąć wybranego elementu, ponieważ jest on powiązany z innymi danymi w systemie.");
+                return;
+            }
         }
         private void deleteStation_Click(object sender, EventArgs e)
         {
