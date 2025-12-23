@@ -269,7 +269,7 @@ namespace Bikeroo
                     costCommand.Parameters.AddWithValue("@userId", userId);
                     costCommand.ExecuteNonQuery();
 
-                    query = "UPDATE users SET points = points + FLOOR(@cost) WHERE Id = @userId";
+                    query = "UPDATE users SET points = ROUND(points + FLOOR(@cost), 2) WHERE Id = @userId";
                     SqliteCommand pointsCommand = new SqliteCommand(query, connection);
                     pointsCommand.Parameters.AddWithValue("@cost", cost);
                     pointsCommand.Parameters.AddWithValue("@userId", userId);
@@ -312,7 +312,7 @@ namespace Bikeroo
                 using (var connection = new SqliteConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "UPDATE users SET balance = balance + @amount WHERE Id = @userId";
+                    string query = "UPDATE users SET balance = ROUND(balance + @amount, 2) WHERE Id = @userId";
                     SqliteCommand command = new SqliteCommand(query, connection);
                     command.Parameters.AddWithValue("@amount", amountToAdd);
                     command.Parameters.AddWithValue("@userId", userId);
@@ -329,7 +329,7 @@ namespace Bikeroo
             using (var connection = new SqliteConnection(connectionString))
             {
                 connection.Open();
-                string query = "SELECT point FROM users WHERE Id=@bikeId";
+                string query = "SELECT point FROM users WHERE Id=@userId";
                 SqliteCommand command = new SqliteCommand(query, connection);
                 command.Parameters.AddWithValue("@userId", userId);
                 SqliteDataReader reader = command.ExecuteReader();
