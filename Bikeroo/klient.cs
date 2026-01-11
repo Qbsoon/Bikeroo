@@ -85,8 +85,26 @@ namespace Bikeroo
             reloadRentList();
             reloadReturnList();
             loadStations();
+            reloadPoints();
         }
-
+        private void reloadPoints()
+        {
+            if (connectionString != null && userId > 0)
+            {
+                using (var connection = new SqliteConnection(connectionString))
+                {
+                    connection.Open();
+                    string query = "SELECT points FROM users WHERE Id=@userId";
+                    SqliteCommand command = new SqliteCommand(query, connection);
+                    command.Parameters.AddWithValue("@userId", userId);
+                    SqliteDataReader reader = command.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        pointsLable.Text = "Punkty: " + reader.GetDouble(0);
+                    }
+                }
+            }
+        }
         private void reloadBalance()
         {
             if (connectionString != null && userId > 0)
@@ -336,15 +354,11 @@ namespace Bikeroo
                 if (reader.Read())
                 {
                     double points = reader.GetDouble(0);
+                    reader.Close();
                     if (points >= 100)
                     {
-                        double new_points = points - 100;
-                        query = "UPDATE users SET points = @new WHERE Id = @userId";
-                        SqliteCommand updateCommand = new SqliteCommand(query, connection);
-                        updateCommand.Parameters.AddWithValue("@new", new_points);
-                        updateCommand.Parameters.AddWithValue("@userId", userId);
-                        updateCommand.ExecuteNonQuery();
                         gamble.ShowDialog();
+                        reloadPoints();
                     }
                     else
                     {

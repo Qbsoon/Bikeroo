@@ -1,10 +1,12 @@
 ﻿using Microsoft.Data.Sqlite;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -75,12 +77,38 @@ namespace Bikeroo
         }
         private void randomButton_Click(object sender, EventArgs e)
         {
+            using(var connection = new SqliteConnection(connectionString))
+            {
+                connection.Open();
+                string query = "SELECT winner FROM users WHERE id = @userId";
+                SqliteCommand command = new SqliteCommand(query, connection);
+                command.Parameters.AddWithValue("@userId", userId);
+                var result = command.ExecuteScalar();
+                if (result != null && Convert.ToInt32(result) == 1)
+                {
+                    MessageBox.Show("Już wygrałeś rower wcześniej!");
+                    this.Close();
+                    return;
+                }
+                query = "SELECT points FROM users WHERE id = @userId";
+                command = new SqliteCommand(query, connection);
+                command.Parameters.AddWithValue("@userId", userId);
+                result = command.ExecuteScalar();
+                if (result != null && Convert.ToInt32(result) >= 100)
+                {
+                    double newPoints = Convert.ToInt32(result) - 100;
+                    string updateQuery = "UPDATE users SET points = @newPoints WHERE id = @userId";
+                    SqliteCommand updateCommand = new SqliteCommand(updateQuery, connection);
+                    updateCommand.Parameters.AddWithValue("@newPoints", newPoints);
+                    updateCommand.Parameters.AddWithValue("@userId", userId);
+                    updateCommand.ExecuteNonQuery();
+                }
+            }
             Random rand = new Random();
             int randomNumber = rand.Next(1, 101); // Losowa liczba od 1 do 100
             if (randomNumber == 86)
             {
                 MessageBox.Show("Gratulacje! Wygrałeś rower!");
-
                 using (var connection = new SqliteConnection(connectionString))
                 {
                     connection.Open();
