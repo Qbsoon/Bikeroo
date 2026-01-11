@@ -41,11 +41,11 @@ CREATE TABLE reports (
 );
 
 -- Wstawienie użytkowników
-INSERT INTO users (username, password, type, balance)
-VALUES ('test', 'test', 2, 0), --użytkownik testowy wewnętrzny, jego Id jest gdy zgłasza się coś w main, oraz gdy nikt nie wziął na siebie zgłoszenia
-('user', 'user', 2, 100),
-('engineer', '123', 1, 0),
-('admin', 'admin', 0, 0);
+INSERT INTO users (username, password, type, balance, points)
+VALUES ('test', 'test', 2, 0, 5), --użytkownik testowy wewnętrzny, jego Id jest gdy zgłasza się coś w main, oraz gdy nikt nie wziął na siebie zgłoszenia
+('user', 'user', 2, 100, 100),
+('engineer', '123', 1, 0, 0),
+('admin', 'admin', 0, 0, 0);
 
 -- Wstawienie stacji
 INSERT INTO stations (name)
