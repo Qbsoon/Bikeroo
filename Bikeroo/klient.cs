@@ -329,7 +329,7 @@ namespace Bikeroo
             using (var connection = new SqliteConnection(connectionString))
             {
                 connection.Open();
-                string query = "SELECT point FROM users WHERE Id=@userId";
+                string query = "SELECT points FROM users WHERE Id=@userId";
                 SqliteCommand command = new SqliteCommand(query, connection);
                 command.Parameters.AddWithValue("@userId", userId);
                 SqliteDataReader reader = command.ExecuteReader();
@@ -338,8 +338,10 @@ namespace Bikeroo
                     double points = reader.GetDouble(0);
                     if (points >= 100)
                     {
-                        query = "UPDATE users SET point = point - 100 WHERE Id = @userId";
+                        double new_points = points - 100;
+                        query = "UPDATE users SET points = @new WHERE Id = @userId";
                         SqliteCommand updateCommand = new SqliteCommand(query, connection);
+                        updateCommand.Parameters.AddWithValue("@new", new_points);
                         updateCommand.Parameters.AddWithValue("@userId", userId);
                         updateCommand.ExecuteNonQuery();
                         gamble.ShowDialog();
