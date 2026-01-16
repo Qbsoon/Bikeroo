@@ -281,7 +281,7 @@ namespace Bikeroo
                     double hours = rentalDuration.TotalHours;
                     cost = 5 * hours;
 
-                    query = "UPDATE users SET balance = balance - @cost WHERE Id = @userId";
+                    query = "UPDATE users SET balance = ROUND(balance - @cost, 2) WHERE Id = @userId";
                     SqliteCommand costCommand = new SqliteCommand(query, connection);
                     costCommand.Parameters.AddWithValue("@cost", cost);
                     costCommand.Parameters.AddWithValue("@userId", userId);
@@ -303,6 +303,7 @@ namespace Bikeroo
             reloadBalance();
             reloadRentList();
             reloadReturnList();
+            reloadPoints();
         }
         private void reportButton_Click(object sender, EventArgs e)
         {
